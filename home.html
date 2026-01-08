@@ -23,32 +23,32 @@ body {
 }
 
 h1 {
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   font-size: 30px;
   font-weight: 500;
 }
 
-/* Button Grid */
+/* Button Container vertikal */
 .button-grid {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-  width: 320px;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  width: 200px; /* Breite der Buttons */
 }
 
 /* Buttons */
 .button-grid a {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background-color: rgba(255,255,255,0.9); /* leicht durchsichtig */
+  width: 100%;      /* volle Breite der Container */
+  padding: 20px 0;  /* Höhe der Buttons */
+  border-radius: 20px; /* leicht abgerundet */
+  background-color: rgba(255,255,255,0.8); /* Transparenz 0.8 */
   display: flex;
   justify-content: center;
   align-items: center;
   text-decoration: none;
   color: #FFC0CB;
-  font-size: 36px; /* wird für SVG egal sein */
+  font-size: 36px; /* falls du Emojis/Icons benutzt */
   border: 2px solid white;
   transition: transform 0.1s, background 0.2s;
 }
@@ -64,19 +64,19 @@ h1 {
 
 /* SVGs innerhalb der Buttons */
 .button-grid a svg {
-  width: 50%; /* passt SVG in den Button */
+  width: 50%;
   height: 50%;
 }
 
 /* Mobile */
 @media (max-width: 400px) {
   .button-grid {
-    width: 240px;
-    gap: 20px;
+    width: 160px;
+    gap: 15px;
   }
   .button-grid a {
-    width: 70px;
-    height: 70px;
+    font-size: 28px;
+    padding: 15px 0;
   }
   .button-grid a svg {
     width: 60%;
@@ -92,7 +92,6 @@ h1 {
 <div class="button-grid">
   <a href="seite1.html" title="Seite 1">
     <!-- SVG hier einfügen -->
-    <!-- Beispiel: <svg>...</svg> -->
   </a>
   <a href="seite2.html" title="Seite 2">
     <!-- SVG hier einfügen -->
