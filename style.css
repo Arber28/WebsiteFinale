@@ -1,10 +1,11 @@
 * {
   box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
   height: 100vh;
   background: linear-gradient(180deg, #FFC0CB 0%, #ffe4ec 100%);
   display: flex;
@@ -15,11 +16,12 @@ body {
 
 .lockscreen {
   text-align: center;
-  width: 300px;
+  width: 90%;
+  max-width: 350px;
 }
 
 h1 {
-  font-size: 20px;
+  font-size: 22px;
   margin-bottom: 25px;
   font-weight: 500;
   color: white;
@@ -32,8 +34,8 @@ h1 {
 }
 
 .code-dots span {
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   border: 2px solid white;
   border-radius: 50%;
   transition: background 0.2s ease;
@@ -46,27 +48,35 @@ h1 {
 .keypad {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
+  gap: 20px;
   margin-top: 30px;
 }
 
 .keypad button {
-  height: 60px;
-  border-radius: 50%;
-  border: none;
-  font-size: 22px;
-  background: rgba(255, 255, 255, 0.35);
+  width: 20vw;           /* automatisch, responsiv */
+  height: 20vw;          /* automatisch, responsiv */
+  max-width: 70px;       /* max Größe für Desktop */
+  max-height: 70px;      /* max Größe für Desktop */
+  border-radius: 50%;    /* rund */
+  border: 2px solid white; /* dünner weißer Rand */
+  font-size: 24px;
+  font-weight: 600;
   color: white;
-  backdrop-filter: blur(6px);
+  background: rgba(255, 255, 255, 0.5); /* weniger durchsichtig */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
 }
 
 .keypad button:active {
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.75);
+  transform: scale(0.95); /* kleiner drücken-Effekt */
 }
 
 .delete {
-  font-size: 18px;
+  font-size: 20px;
 }
 
 /* iPhone-typischer Fehler-Shake */
