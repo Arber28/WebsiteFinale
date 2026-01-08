@@ -19,24 +19,18 @@
     border: none;
   }
 
+  /* ===== BUTTONS ===== */
   .top-buttons {
     position: fixed;
-    top: 10px;
-    left: 10px;
-    width: calc(100% - 20px);
-    display: flex;
-    justify-content: space-between;
-    pointer-events: none;
     z-index: 2000;
+    pointer-events: none; /* Container blockiert keine Klicks */
   }
 
   .top-buttons button {
-    pointer-events: auto;
+    pointer-events: auto; /* Buttons sind klickbar */
     background-color: rgba(255, 20, 147, 0.7); /* pink 70% */
     color: white;
     border: none;
-    width: 60px;   /* Größe wie auf Seite1 */
-    height: 60px;  /* Größe wie auf Seite1 */
     border-radius: 50%;
     font-size: 24px;
     cursor: pointer;
@@ -44,6 +38,18 @@
     align-items: center;
     justify-content: center;
     transition: background 0.2s;
+    position: absolute;
+
+    /* VARIABLEN ZUR FEINJUSTIERUNG */
+    width: var(--btn-size, 60px);   /* Breite */
+    height: var(--btn-size, 60px);  /* Höhe */
+    top: var(--btn-top, 10px);      /* Abstand vom oberen Rand */
+    left: var(--btn-left, 10px);    /* Abstand vom linken Rand */
+  }
+
+  .top-buttons button.reload {
+    left: auto;
+    right: var(--btn-right, 10px);  /* Abstand vom rechten Rand */
   }
 
   .top-buttons button:hover {
@@ -54,8 +60,8 @@
 <body>
 
 <div class="top-buttons">
-  <button onclick="history.back()">←</button>
-  <button onclick="location.reload()">⟳</button>
+  <button class="back" onclick="history.back()">←</button>
+  <button class="reload" onclick="location.reload()">⟳</button>
 </div>
 
 <iframe id="randomFrame"></iframe>
