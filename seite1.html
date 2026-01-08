@@ -3,9 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>Flipbook Mobile</title>
+<title>Flipbook Mobile Right-Hand</title>
 
-<!-- Lokale Bibliotheken -->
 <script src="js/jquery.js"></script>
 <script src="js/turn.js"></script>
 
@@ -19,6 +18,7 @@ body {
   justify-content: center;
   align-items: center;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow-x: hidden; /* horizontales Scrollen verhindern */
 }
 
 #flipbook {
@@ -26,18 +26,26 @@ body {
   max-width: 360px;
   height: 75vh;
   box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  overflow: visible; /* Seiten dürfen aus Container ragen */
+  position: relative;
 }
 
 /* Seiten */
 #flipbook .hard, #flipbook .page {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start; /* Inhalt links oben optional */
+  align-items: flex-start;
   font-size: 20px;
   padding: 20px;
   box-sizing: border-box;
   background: white;
   border-radius: 5px;
+  position: absolute; /* absolut, damit sie nicht komplett verschwinden */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
 /* Cover / Rückseite */
@@ -51,7 +59,7 @@ body {
 <body>
 
 <div id="flipbook">
-  <div class="hard">Cover</div> <!-- nur rechts sichtbar nach Umblättern -->
+  <div class="hard">Cover</div>
   <div class="page">Seite 1</div>
   <div class="page">Seite 2</div>
   <div class="page">Seite 3</div>
@@ -63,12 +71,15 @@ $(document).ready(function() {
   $("#flipbook").turn({
     width: $("#flipbook").width(),
     height: $("#flipbook").height(),
-    autoCenter: true,
-    display: 'single',   // nur eine Seite rechts sichtbar
+    autoCenter: false,
+    display: 'single',       // nur rechte Seite sichtbar
     acceleration: true,
     gradients: true,
     elevation: 50
   });
+
+  // Optional: Offset für linke Seite minimal sichtbar
+  $('#flipbook .page, #flipbook .hard').css('transform-origin', 'left center');
 });
 </script>
 
