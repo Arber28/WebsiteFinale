@@ -1,77 +1,30 @@
-* {
-  box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  height: 100vh;
-  background: linear-gradient(180deg, #FFC0CB 0%, #ffe4ec 100%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-}
-
-.lockscreen {
-  text-align: center;
-  width: 90%;
-  max-width: 350px;
-}
-
-h1 {
-  font-size: 22px;
-  margin-bottom: 25px;
-  font-weight: 500;
-  color: white;
-}
-
-.code-dots {
-  display: flex;
-  justify-content: space-between;
-  margin: 20px 40px;
-}
-
-.code-dots span {
-  width: 14px;
-  height: 14px;
-  border: 2px solid white;
-  border-radius: 50%;
-  transition: background 0.2s ease;
-}
-
-.code-dots span.filled {
-  background: white;
-}
-
-/* Keypad mit festen runden Buttons */
 .keypad {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 70px); /* 3 Spalten, feste Breite */
+  grid-template-rows: repeat(4, 70px);    /* 4 Reihen, gleiche Höhe */
+  justify-content: center;  /* zentriert das Keypad */
+  gap: 20px;                 /* Abstand zwischen Buttons */
   margin-top: 30px;
 }
 
 .keypad button {
   width: 70px;
   height: 70px;
-  border-radius: 50%;
+  border-radius: 50%;       /* garantiert rund */
   border: 2px solid white;
   font-size: 24px;
   font-weight: 600;
   color: white;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.6);
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center;      /* Zahl perfekt mittig */
   cursor: pointer;
   transition: background 0.2s ease, transform 0.1s ease;
 }
 
 .keypad button:active {
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.8);
   transform: scale(0.95);
 }
 
@@ -79,7 +32,7 @@ h1 {
   font-size: 20px;
 }
 
-/* Shake-Animation bei falschem Code */
+/* iPhone-typischer Shake bei falschem Code */
 @keyframes shake {
   0% { transform: translateX(0); }
   25% { transform: translateX(-6px); }
