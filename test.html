@@ -2,25 +2,55 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Wrapper Seite</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#000000">
+  <title>Zufällige Blumen</title>
   <style>
     html, body {
       margin: 0;
       padding: 0;
-      background-color: black;
       height: 100%;
+      width: 100%;
+      background-color: black;
       overflow: hidden;
     }
     iframe {
       border: none;
-      width: 100vw;
-      height: 100vh;
+      width: 100%;
+      height: 100%;
+      display: block;
     }
   </style>
 </head>
 <body>
-  <iframe src="./animations/blau1/index.html"></iframe>
+
+<iframe id="flowerFrame"></iframe>
+
+<script>
+  // Liste deiner Unterordner
+  const folders = [
+    "animations/blau1",
+    "animations/blau2",
+    "animations/gelb1",
+    "animations/orange1"
+    // ...alle Unterordner hier eintragen
+  ];
+
+  // Funktion: Zufällige HTML-Datei im Ordner
+  function getRandomHtmlFromFolder(folder) {
+    // Wir nehmen einfach mal "index.html" als Standard in jedem Ordner
+    return folder + "/index.html";
+  }
+
+  // Zufälligen Ordner auswählen
+  const randomFolderIndex = Math.floor(Math.random() * folders.length);
+  const chosenFolder = folders[randomFolderIndex];
+
+  // HTML-Datei im Ordner auswählen
+  const chosenPage = getRandomHtmlFromFolder(chosenFolder);
+
+  // Setze iframe src
+  document.getElementById("flowerFrame").src = chosenPage;
+</script>
+
 </body>
 </html>
