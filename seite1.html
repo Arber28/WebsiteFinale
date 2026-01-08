@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Flipbook Realistic</title>
+<title>Flipbook</title>
 
+<!-- CSS -->
 <style>
 html, body {
   margin: 0;
@@ -14,32 +15,33 @@ html, body {
   justify-content: center;
   align-items: center;
   font-family: sans-serif;
+  overflow: hidden;
 }
 
 #flipbook {
   width: 90vw;
-  max-width: 400px;
-  height: 70vh;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  border-radius: 12px;
+  max-width: 380px;
+  height: 75vh;
 }
 
 #flipbook .page {
+  width: 100%;
+  height: 100%;
   background: white;
-  box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
-  border-radius: 12px;
+  border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 18px;
+  font-size: 20px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.25);
   padding: 20px;
   box-sizing: border-box;
 }
 </style>
 
-<!-- jQuery + Turn.js -->
-<script src="jquery.js"></script>
-<script src="turn.min.js"></script>
+<!-- Bibliotheken -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/4.1.0/turn.min.js"></script>
 
 </head>
 <body>
@@ -58,10 +60,9 @@ $(document).ready(function() {
     width: $("#flipbook").width(),
     height: $("#flipbook").height(),
     autoCenter: true,
-    display: 'double', // zeigt zwei Seiten wie ein Buch
+    display: 'single',     // Single-Page für Handy, robust
     acceleration: true,
-    gradients: true,    // realistische Schatten
-    elevation: 50       // tiefe Schatten für Page-Curl
+    gradients: true
   });
 });
 </script>
