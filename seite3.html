@@ -20,9 +20,9 @@
 
   /* Überschrift über Kärtchen */
   .card-title {
-    font-size: 1.8em; 
+    font-size: 1.5em; 
     color: #fff;
-    margin-bottom: 60px; 
+    margin-bottom: 80px; 
     text-align: center;
   }
 
@@ -62,7 +62,7 @@
     z-index: 1; 
   }
 
-  /* Next-Button unter dem Kärtchen */
+  /* Next-Button unter Kärtchen */
   .next-btn {
     margin-top: 20px;
     padding: 20px 40px; 
@@ -72,18 +72,18 @@
     font-size: 1.2em;
     cursor: pointer;
     border: none;
-    opacity: 0.9;
+    opacity: 0.7;
   }
   .next-btn:hover { opacity: 1; }
 
-  /* Zurück-Button von Flipbook übernommen */
+  /* Exakt Flipbook-Zurück-Button */
   #back-home {
     position: absolute;
     top: 20px;
     left: 20px;
     z-index: 1000;
-    width: 50px;
-    height: 50px;
+    width: 60px;        /* gleiche Größe wie Flipbook */
+    height: 60px;       /* gleiche Größe wie Flipbook */
     background: rgba(255,255,255,0.8);
     color: #FFC0CB;
     border-radius: 50%;
@@ -91,15 +91,15 @@
     justify-content: center;
     align-items: center;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 28px;
     text-decoration: none;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.35);
     transition: transform 0.15s, box-shadow 0.15s;
     cursor: pointer;
   }
   #back-home:hover {
     transform: scale(1.1);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.45);
   }
 </style>
 </head>
@@ -123,7 +123,7 @@
   // Back-Button zurück zur Home-Seite
   document.getElementById('back-home').addEventListener('click', function(e){
     e.preventDefault();
-    window.location.href = './home.html'; // passe Pfad zu deiner Home-Seite an
+    window.location.href = './home.html'; // Pfad anpassen
   });
 
   // Quotes für Next-Button
