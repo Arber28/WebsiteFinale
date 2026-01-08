@@ -1,4 +1,3 @@
-/* Reset */
 *,
 *::after,
 *::before {
@@ -7,67 +6,18 @@
   box-sizing: border-box;
 }
 
-/* Balken außerhalb */
-html::before,
-html::after {
-  content: "";
-  display: block;
-  width: 100%;
-  height: 50px;       /* Höhe des Balkens, anpassen nach Bedarf */
-  background-color: black;
-  position: absolute; /* liegt außerhalb des normalen Flows */
-  left: 0;
-  z-index: 10000;     /* ganz oben */
-}
-
-html::before {
-  top: -50px;         /* oberhalb vom sichtbaren Bereich */
-}
-
-html::after {
-  bottom: -50px;      /* unterhalb vom sichtbaren Bereich */
-}
-
-/* Dein bisheriger Body-Code */
-body {
-  min-height: 100vh;
-  background-color: var(--dark-color);
-  overflow: hidden; 
-  perspective: 1000px;
-}
-
 :root {
   --dark-color: #000;
 }
 
 body {
-  margin: 0;
-  padding: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
   min-height: 100vh;
   background-color: var(--dark-color);
   overflow: hidden;
   perspective: 1000px;
-  position: relative;
-}
-
-/* Balken */
-.black-bar {
-  position: fixed; /* fixiert außerhalb des normalen Inhaltsflusses */
-  left: 0;
-  width: 100%;
-  height: 50px; /* Höhe anpassen */
-  background-color: black;
-  z-index: 9999; /* wirklich oben */
-}
-
-/* Obere Bar */
-.black-bar.top {
-  top: -50px; /* ganz außerhalb des Bildschirms nach oben */
-}
-
-/* Untere Bar */
-.black-bar.bottom {
-  bottom: -50px; /* ganz außerhalb des Bildschirms nach unten */
 }
 
 .night {
