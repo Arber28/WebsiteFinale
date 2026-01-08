@@ -28,32 +28,30 @@ body {
   box-shadow: 0 8px 25px rgba(0,0,0,0.3);
 }
 
-#flipbook .hard {
-  background: #fff;
-  color: #FFC0CB;
-  font-weight: bold;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 24px;
-}
-
-#flipbook .page {
-  background: white;
-  color: #333;
+/* Seiten */
+#flipbook .hard, #flipbook .page {
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 20px;
   padding: 20px;
   box-sizing: border-box;
+  background: white;
+  border-radius: 5px;
+}
+
+/* Cover / Rückseite */
+#flipbook .hard {
+  font-weight: bold;
+  color: #FFC0CB;
+  font-size: 24px;
 }
 </style>
 </head>
 <body>
 
 <div id="flipbook">
-  <div class="hard">Cover</div>
+  <div class="hard">Cover</div> <!-- nur rechts sichtbar nach Umblättern -->
   <div class="page">Seite 1</div>
   <div class="page">Seite 2</div>
   <div class="page">Seite 3</div>
@@ -66,7 +64,7 @@ $(document).ready(function() {
     width: $("#flipbook").width(),
     height: $("#flipbook").height(),
     autoCenter: true,
-    display: 'double',  // doppelseitiges Buch
+    display: 'single',   // nur eine Seite rechts sichtbar
     acceleration: true,
     gradients: true,
     elevation: 50
