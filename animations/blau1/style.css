@@ -9,7 +9,8 @@
 html, body {
   margin: 0;
   padding: 0;
-  height: calc(var(--vh, 1vh) * 100);
+  
+  height: 100%;
   width: 100%;
   overflow: hidden; /* kein scrollen */
   background-color: black; /* alles außerhalb schwarz */
