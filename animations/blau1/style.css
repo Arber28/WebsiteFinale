@@ -1,9 +1,39 @@
+/* Reset */
 *,
 *::after,
 *::before {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+/* Balken außerhalb */
+html::before,
+html::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 50px;       /* Höhe des Balkens, anpassen nach Bedarf */
+  background-color: black;
+  position: absolute; /* liegt außerhalb des normalen Flows */
+  left: 0;
+  z-index: 10000;     /* ganz oben */
+}
+
+html::before {
+  top: -50px;         /* oberhalb vom sichtbaren Bereich */
+}
+
+html::after {
+  bottom: -50px;      /* unterhalb vom sichtbaren Bereich */
+}
+
+/* Dein bisheriger Body-Code */
+body {
+  min-height: 100vh;
+  background-color: var(--dark-color);
+  overflow: hidden; 
+  perspective: 1000px;
 }
 
 :root {
