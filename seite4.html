@@ -19,38 +19,46 @@
     border: none;
   }
 
-  /* ===== BUTTONS ===== */
-  .top-buttons {
-    position: fixed;
-    z-index: 2000;
-    pointer-events: none; /* Container blockiert keine Klicks */
-  }
+.top-buttons {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2000;
+  pointer-events: none; /* Container blockiert keine Klicks */
+}
 
-  .top-buttons button {
-    pointer-events: auto; /* Buttons sind klickbar */
-    background-color: rgba(255, 20, 147, 0.7); /* pink 70% */
-    color: white;
-    border: none;
-    border-radius: 50%;
-    font-size: 24px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.2s;
-    position: absolute;
+.top-buttons button {
+  pointer-events: auto; /* Buttons sind klickbar */
+  background-color: rgba(255, 20, 147, 0.7);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  position: absolute;
 
-    /* VARIABLEN ZUR FEINJUSTIERUNG */
-    width: var(--btn-size, 60px);   /* Breite */
-    height: var(--btn-size, 60px);  /* Höhe */
-    top: var(--btn-top, 10px);      /* Abstand vom oberen Rand */
-    left: var(--btn-left, 10px);    /* Abstand vom linken Rand */
-  }
+  /* VARIABLEN FÜR FEINJUSTIERUNG */
+  width: var(--btn-size, 60px);
+  height: var(--btn-size, 60px);
+  top: var(--btn-top, 10px);
+}
 
-  .top-buttons button.reload {
-    left: auto;
-    right: var(--btn-right, 10px);  /* Abstand vom rechten Rand */
-  }
+/* Zurück-Button links */
+.top-buttons button.back {
+  left: var(--btn-left, 10px);
+}
+
+/* Reload-Button rechts */
+.top-buttons button.reload {
+  right: var(--btn-right, 10px);
+  left: auto; /* wichtig */
+}
 
   .top-buttons button:hover {
     background-color: rgba(255, 20, 147, 1);
