@@ -22,6 +22,24 @@ body {
   padding: 0;
 }
 
+.background-black {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  z-index: 0; /* damit es unter .night liegt */
+}
+
+.night {
+  z-index: 1; /* sicherstellen, dass die Effekte darüber liegen */
+}
+
+.flowers {
+  z-index: 2; /* Blumen liegen oben */
+}
+
 .night {
   position: fixed;
   left: 50%;
