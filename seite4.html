@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zufällige Blumen</title>
+</head>
+<body style="margin:0;">
+
+<iframe id="animationFrame" style="width:100%; height:100vh; border:none;"></iframe>
+
+<script>
+  const projects = [
+    "animations/rot1/index.html",
+    "animations/türkis1/index.html",
+    "animations/blau1/index.html",
+    "animations/rosa1/index.html",
+    "animations/orange1/index.html",
+    "animations/lila1/index.html",
+    "animations/gelb1/index.html"
+  ];
+
+  // Zufällige Animation auswählen
+  const randomIndex = Math.floor(Math.random() * projects.length);
+  document.getElementById('animationFrame').src = projects[randomIndex];
+</script>
+
+</body>
+</html>
