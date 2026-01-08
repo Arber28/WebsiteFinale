@@ -12,16 +12,50 @@
       width: 100%;
       background-color: black;
       overflow: hidden;
+      font-family: sans-serif;
     }
+
     iframe {
       border: none;
       width: 100%;
       height: 100%;
       display: block;
     }
+
+    /* Buttons Style */
+    .top-buttons {
+      position: fixed;
+      top: 10px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 10px;
+      pointer-events: none; /* verhindert, dass Buttons den Content blockieren */
+      z-index: 10000;
+    }
+
+    .top-buttons button {
+      pointer-events: auto; /* Buttons trotzdem klickbar */
+      background-color: rgba(0,0,0,0.6);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .top-buttons button:hover {
+      background-color: rgba(255,255,255,0.2);
+    }
   </style>
 </head>
 <body>
+
+<div class="top-buttons">
+  <button id="backBtn">Zurück</button>
+  <button id="reloadBtn">Neu Laden</button>
+</div>
 
 <iframe id="flowerFrame"></iframe>
 
@@ -32,24 +66,31 @@
     "animations/blau2",
     "animations/gelb1",
     "animations/orange1"
-    // ...alle Unterordner hier eintragen
+    // ... hier beliebig weitere hinzufügen
   ];
 
-  // Funktion: Zufällige HTML-Datei im Ordner
   function getRandomHtmlFromFolder(folder) {
-    // Wir nehmen einfach mal "index.html" als Standard in jedem Ordner
+    // Standard HTML-Dateiname in jedem Ordner
     return folder + "/index.html";
   }
 
-  // Zufälligen Ordner auswählen
-  const randomFolderIndex = Math.floor(Math.random() * folders.length);
-  const chosenFolder = folders[randomFolderIndex];
+  function loadRandomFlower() {
+    const randomFolderIndex = Math.floor(Math.random() * folders.length);
+    const chosenFolder = folders[randomFolderIndex];
+    const chosenPage = getRandomHtmlFromFolder(chosenFolder);
+    document.getElementById("flowerFrame").src = chosenPage;
+  }
 
-  // HTML-Datei im Ordner auswählen
-  const chosenPage = getRandomHtmlFromFolder(chosenFolder);
+  loadRandomFlower();
 
-  // Setze iframe src
-  document.getElementById("flowerFrame").src = chosenPage;
+  // Buttons
+  document.getElementById("backBtn").addEventListener("click", () => {
+    window.history.back();
+  });
+
+  document.getElementById("reloadBtn").addEventListener("click", () => {
+    loadRandomFlower();
+  });
 </script>
 
 </body>
