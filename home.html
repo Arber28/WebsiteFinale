@@ -35,16 +35,16 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
-  width: 240px; /* breitere Buttons */
+  gap: 35px;   /* etwas mehr Abstand zwischen Buttons */
+  width: 240px; /* Breite der Buttons */
 }
 
 /* Buttons */
 .button-grid a {
-  width: 100%;        /* volle Breite */
-  padding: 25px 0;    /* größere Höhe */
-  border-radius: 25px; /* etwas runder */
-  background-color: rgba(255,255,255,0.8); /* Transparenz 0.8 */
+  width: 100%;
+  padding: 40px 0;    /* HÖHERE Buttons */
+  border-radius: 25px;
+  background-color: rgba(255,255,255,0.8);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -74,11 +74,11 @@ h1 {
 @media (max-width: 400px) {
   .button-grid {
     width: 180px;
-    gap: 20px;
+    gap: 25px;
   }
   .button-grid a {
     font-size: 32px;
-    padding: 20px 0;
+    padding: 30px 0; /* höher auf kleineren Bildschirmen */
   }
   .button-grid a svg {
     width: 60%;
