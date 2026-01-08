@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Flipbook Einfach</title>
+<title>Flipbook A4 groß</title>
 <style>
 body {
   margin: 0;
@@ -36,12 +36,13 @@ body {
   z-index: 100;
 }
 
-/* Buch Container */
+/* Buch Container: größer, A4 */
 .book {
   position: relative;
-  width: 90vw;
-  max-width: 400px;
-  height: 75vh;
+  width: 70vw;               /* größer als vorher */
+  max-width: 900px;          /* maximale Breite */
+  height: calc(70vw * 1.414); /* A4 Verhältnis */
+  max-height: 1273px;        /* max Höhe passend zu max Breite */
   perspective: 1200px;
 }
 
@@ -79,9 +80,15 @@ body {
   background-color: white;
 }
 
-/* Rückseite umdrehen */
 .back {
   transform: rotateY(180deg);
+}
+
+/* Bilder */
+.front img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* passt sich A4 Container perfekt an */
 }
 
 /* Klick-Zonen */
@@ -101,22 +108,39 @@ body {
 <a id="back-home" href="./home.html">←</a>
 
 <div class="book" id="book">
+
+  <!-- Seite 1 -->
   <div class="page" style="z-index:4;">
-    <div class="front">Seite 1</div>
+    <div class="front">
+      <img src="buch1.png" alt="Seite 1">
+    </div>
     <div class="back"></div>
   </div>
+
+  <!-- Seite 2 -->
   <div class="page" style="z-index:3;">
-    <div class="front">Seite 2</div>
+    <div class="front">
+      <img src="seite2.png" alt="Seite 2">
+    </div>
     <div class="back"></div>
   </div>
+
+  <!-- Seite 3 -->
   <div class="page" style="z-index:2;">
-    <div class="front">Seite 3</div>
+    <div class="front">
+      <img src="seite3.png" alt="Seite 3">
+    </div>
     <div class="back"></div>
   </div>
+
+  <!-- Seite 4 -->
   <div class="page" style="z-index:1;">
-    <div class="front">Seite 4</div>
+    <div class="front">
+      <img src="seite4.png" alt="Seite 4">
+    </div>
     <div class="back"></div>
   </div>
+
 </div>
 
 <div class="click-zone click-left"></div>
