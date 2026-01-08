@@ -5,16 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <title>Seite 3</title>
 <style>
-  body {
+  html, body {
     margin: 0;
     padding: 0;
+    width: 100vw;
     height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; /* gesamter Inhalt mittig */
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow: hidden;      /* kein Scrollen */
+    touch-action: none;    /* kein Swipe/Scroll auf Mobil */
     background: #FFC0CB;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     position: relative;
   }
 
@@ -38,38 +37,44 @@
     box-shadow: 0 4px 12px rgba(0,0,0,0.25);
     transition: transform 0.15s, box-shadow 0.15s;
   }
-
   #back-home:hover {
     transform: scale(1.1);
     box-shadow: 0 6px 16px rgba(0,0,0,0.3);
   }
 
-  /* Überschrift leicht über der Karte */
+  /* Überschrift */
   .title {
-    font-size: 1.5rem;
-    margin-bottom: 80px; /* Abstand zur Karte */
-    font-weight: bold;
-    color: #fff;
+    position: absolute;
+    top: 40px;
+    width: 100%;
     text-align: center;
-    z-index: 2;
-    position: relative;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    z-index: 10;
   }
 
   /* Container für Karte + Text */
   .karte-container {
-    position: relative;
-    margin-bottom: 120px; /* negative Werte verschieben nach oben */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70vw;
+    max-width: 600px;
+    aspect-ratio: 3 / 2; /* A4-artiges Verhältnis */
     display: flex;
-    justify-content: center; /* horizontal mittig */
-    align-items: center;     /* vertikal mittig innerhalb Container */
+    justify-content: center;
+    align-items: center;
   }
 
-  /* Karte.png */
+  /* Karte-Bild */
   #karte {
-    max-width: 90%;
-    max-height: 70vh;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
     z-index: 1;
+    border-radius: 15px;
   }
 
   /* Text auf der Karte */
@@ -78,7 +83,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #000; /* schwarz */
+    color: #000;
     font-size: 1.5rem;
     font-weight: bold;
     text-align: center;
@@ -86,10 +91,12 @@
     z-index: 2;
   }
 
-  /* Next-Button unten */
+  /* Next-Button fest unten */
   #next-button {
     position: absolute;
-    bottom: 150px; /* etwas höher */
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
     width: 150px;
     height: 50px;
     background: rgba(255,255,255,0.7);
@@ -107,7 +114,6 @@
     transition: transform 0.15s, box-shadow 0.15s;
     z-index: 100;
   }
-
   #next-button:hover {
     transform: scale(1.05);
     box-shadow: 0 6px 16px rgba(0,0,0,0.3);
@@ -118,16 +124,13 @@
 
 <a id="back-home" href="./home.html">←</a>
 
-<!-- Überschrift -->
 <div class="title">Dinge die ich an dir liebe:</div>
 
-<!-- Karte + Text Container -->
 <div class="karte-container">
   <img id="karte" src="Karte.png" alt="Karte">
   <div id="quote">Lade...</div>
 </div>
 
-<!-- Next-Button -->
 <a id="next-button">Next</a>
 
 <script>
@@ -154,6 +157,11 @@ document.getElementById('next-button').addEventListener('click', newQuote);
 
 // Erstes Zitat beim Laden
 newQuote();
+
+// Extra: Touch-Scroll auf Mobil verhindern
+window.addEventListener('touchmove', function(e) {
+  e.preventDefault();
+}, { passive: false });
 </script>
 
 </body>
