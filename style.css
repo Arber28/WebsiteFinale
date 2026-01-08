@@ -1,9 +1,57 @@
+* {
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  background: linear-gradient(180deg, #FFC0CB 0%, #ffe4ec 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.lockscreen {
+  text-align: center;
+  width: 90%;
+  max-width: 350px;
+}
+
+h1 {
+  font-size: 22px;
+  margin-bottom: 25px;
+  font-weight: 500;
+  color: white;
+}
+
+.code-dots {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 40px;
+}
+
+.code-dots span {
+  width: 14px;
+  height: 14px;
+  border: 2px solid white;
+  border-radius: 50%;
+  transition: background 0.2s ease;
+}
+
+.code-dots span.filled {
+  background: white;
+}
+
+/* Keypad 3x4 mit festen, perfekt runden Buttons */
 .keypad {
   display: grid;
   grid-template-columns: repeat(3, 70px); /* 3 Spalten, feste Breite */
   grid-template-rows: repeat(4, 70px);    /* 4 Reihen, gleiche Höhe */
-  justify-content: center;  /* zentriert das Keypad */
-  gap: 20px;                 /* Abstand zwischen Buttons */
+  justify-content: center;                /* zentriert das Keypad */
+  gap: 20px;                              /* Abstand zwischen Buttons */
   margin-top: 30px;
 }
 
@@ -28,7 +76,7 @@
   transform: scale(0.95);
 }
 
-.delete {
+.keypad .delete {
   font-size: 20px;
 }
 
@@ -43,4 +91,18 @@
 
 .lockscreen.shake {
   animation: shake 0.35s;
+}
+
+/* Responsive Anpassung für kleine Geräte */
+@media (max-width: 400px) {
+  .keypad {
+    grid-template-columns: repeat(3, 60px);
+    grid-template-rows: repeat(4, 60px);
+    gap: 15px;
+  }
+  .keypad button {
+    width: 60px;
+    height: 60px;
+    font-size: 20px;
+  }
 }
