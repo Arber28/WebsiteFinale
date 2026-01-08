@@ -22,7 +22,7 @@ buttons.forEach(btn => {
 
     if (enteredCode.length === 6) {
       if (enteredCode === correctCode) {
-        window.location.href = "home.html"; // Zielseite nach Code
+        window.location.href = "home.html"; // Zielseite nach richtigem Code
       } else {
         enteredCode = "";
         updateDots();
