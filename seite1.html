@@ -18,63 +18,46 @@ html, body {
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* Flipbook Container */
-#flipbook {
+#flipbook-container {
   width: 90vw;
-  max-width: 380px;
+  max-width: 350px;
   height: 75vh;
-  background: white;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
-}
-
-/* Seiten drin */
-#flipbook .page {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 22px;
-  padding: 15px;
-  box-sizing: border-box;
-  background: white;
-  border-radius: 8px;
-  overflow: hidden;
-  text-align: center;
-}
-
-/* Optional etwas Schatten fürs Buch */
-#flipbook .turn-page {
-  box-shadow: inset 0 0 15px rgba(0,0,0,0.1);
+  position: relative;
 }
 </style>
 
-<!-- jQuery (erforderlich) -->
+<!-- jQuery (frei verfügbar) -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- Turn.js 4.x (flipbook) -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/4.1.0/turn.min.js"></script>
+
+<!-- 3D Flipbook – Open Source -->
+<script src="https://cdn.jsdelivr.net/npm/3dflipbook/dist/flipbook.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/3dflipbook/dist/flipbook.min.css">
 
 </head>
 <body>
 
-<div id="flipbook">
-  <div class="page"><strong>Cover</strong></div>
-  <div class="page">Seite 1</div>
-  <div class="page">Seite 2</div>
-  <div class="page">Seite 3</div>
-  <div class="page">Seite 4</div>
-  <div class="page"><strong>Ende</strong></div>
+<div id="flipbook-container">
+  <div class="flipbook">
+    <div class="page">Seite 1</div>
+    <div class="page">Seite 2</div>
+    <div class="page">Seite 3</div>
+    <div class="page">Seite 4</div>
+  </div>
 </div>
 
 <script>
 $(document).ready(function() {
-  $("#flipbook").turn({
-    width: $("#flipbook").width(),
-    height: $("#flipbook").height(),
-    autoCenter: true,
-    display: 'double',   // zwei Seiten nebeneinander
-    acceleration: true,
-    gradients: true      // Schatten & Übergänge
+  $('.flipbook').flipBook({
+    pages: [
+      { html: '<div class="page">Seite 1</div>' },
+      { html: '<div class="page">Seite 2</div>' },
+      { html: '<div class="page">Seite 3</div>' },
+      { html: '<div class="page">Seite 4</div>' }
+    ],
+    reader: true,
+    controls: true,
+    pageMode: 'double', // doppelseitig
+    responsive: true
   });
 });
 </script>
