@@ -8,7 +8,7 @@
 <style>
 html, body {
   margin: 0;
-  width: 100%;
+  padding: 0;
   height: 100%;
   background: #FFC0CB;
   display: flex;
@@ -18,50 +18,52 @@ html, body {
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
+/* Flipbook Container */
 #flipbook {
   width: 90vw;
   max-width: 380px;
   height: 75vh;
+  background: white;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
 }
 
-/* Seitenstil */
+/* Seiten drin */
 #flipbook .page {
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
+  font-size: 22px;
   padding: 15px;
   box-sizing: border-box;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
 }
 
-/* Hard cover Styling */
-#flipbook .hard {
-  background: #eee;
-  font-weight: bold;
+/* Optional etwas Schatten fürs Buch */
+#flipbook .turn-page {
+  box-shadow: inset 0 0 15px rgba(0,0,0,0.1);
 }
 </style>
 
-<!-- jQuery & Turn.js -->
+<!-- jQuery (erforderlich) -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Turn.js 4.x (flipbook) -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/4.1.0/turn.min.js"></script>
 
 </head>
 <body>
 
 <div id="flipbook">
-  <div class="hard">Cover</div>
-  <div class="hard"></div>
-
+  <div class="page"><strong>Cover</strong></div>
   <div class="page">Seite 1</div>
   <div class="page">Seite 2</div>
   <div class="page">Seite 3</div>
   <div class="page">Seite 4</div>
-
-  <div class="hard"></div>
-  <div class="hard">Rückseite</div>
+  <div class="page"><strong>Ende</strong></div>
 </div>
 
 <script>
@@ -70,9 +72,9 @@ $(document).ready(function() {
     width: $("#flipbook").width(),
     height: $("#flipbook").height(),
     autoCenter: true,
-    display: 'double',     // echtes Buch‑Layout
+    display: 'double',   // zwei Seiten nebeneinander
     acceleration: true,
-    gradients: true        // Schatteneffekte
+    gradients: true      // Schatten & Übergänge
   });
 });
 </script>
