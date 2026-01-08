@@ -53,16 +53,14 @@ h1 {
 }
 
 .keypad button {
-  width: 20vw;           /* automatisch, responsiv */
-  height: 20vw;          /* automatisch, responsiv */
-  max-width: 70px;       /* max Größe für Desktop */
-  max-height: 70px;      /* max Größe für Desktop */
-  border-radius: 50%;    /* rund */
-  border: 2px solid white; /* dünner weißer Rand */
+  width: 100%;              /* volle Breite des Grid-Cells */
+  aspect-ratio: 1 / 1;      /* garantiert quadratisch → rund mit border-radius */
+  border-radius: 50%;
+  border: 2px solid white;
   font-size: 24px;
   font-weight: 600;
   color: white;
-  background: rgba(255, 255, 255, 0.5); /* weniger durchsichtig */
+  background: rgba(255, 255, 255, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -72,14 +70,14 @@ h1 {
 
 .keypad button:active {
   background: rgba(255, 255, 255, 0.75);
-  transform: scale(0.95); /* kleiner drücken-Effekt */
+  transform: scale(0.95);
 }
 
 .delete {
   font-size: 20px;
 }
 
-/* iPhone-typischer Fehler-Shake */
+/* Shake-Animation bei falschem Code */
 @keyframes shake {
   0% { transform: translateX(0); }
   25% { transform: translateX(-6px); }
