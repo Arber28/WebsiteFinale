@@ -33,17 +33,17 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;  /* Abstand zwischen Buttons */
-  width: 80%;  /* Breite an Bildschirm anpassen */
+  gap: 20px;  /* etwas größere Abstände zwischen Buttons */
+  width: 80%;
   max-width: 280px;
 }
 
 /* Buttons */
 .button-grid a {
   width: 100%;
-  height: 18vh;  /* Button-Höhe = 18% der Bildschirmhöhe */
-  min-height: 60px;
-  max-height: 120px;
+  height: 15vh;       /* etwas kleinere Höhe */
+  min-height: 50px;
+  max-height: 100px;
   border-radius: 25px;
   background-color: rgba(255,255,255,0.8);
   display: flex;
@@ -66,22 +66,22 @@ h1 {
 
 /* SVGs in Buttons */
 .button-grid a img {
-  max-width: 50%;
-  max-height: 70%;
+  max-width: 45%;   /* SVG etwas kleiner */
+  max-height: 60%;
   object-fit: contain;
 }
 
 /* Mobile / Responsive */
 @media (max-width: 400px) {
   .button-grid a {
-    height: 16vh;
+    height: 14vh;       /* kleinere Buttons auf kleinen Geräten */
   }
   .button-grid a img {
-    max-height: 65%;
+    max-height: 55%;    /* SVGs etwas kleiner */
   }
   h1 {
     font-size: 22px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
   }
 }
 </style>
