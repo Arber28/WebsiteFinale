@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home</title>
+<style>
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  background-color: #FFC0CB;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  flex-direction: column;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 40px;
+  font-size: 30px;
+  font-weight: 500;
+}
+
+/* Button Grid */
+.button-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  width: 320px;
+}
+
+/* Buttons */
+.button-grid a {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: rgba(255,255,255,0.9); /* leicht durchsichtig */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: #FFC0CB;
+  font-size: 36px; /* wird für SVG egal sein */
+  border: 2px solid white;
+  transition: transform 0.1s, background 0.2s;
+}
+
+.button-grid a:hover {
+  background-color: rgba(255,255,255,1);
+  transform: scale(1.05);
+}
+
+.button-grid a:active {
+  transform: scale(0.95);
+}
+
+/* SVGs innerhalb der Buttons */
+.button-grid a svg {
+  width: 50%; /* passt SVG in den Button */
+  height: 50%;
+}
+
+/* Mobile */
+@media (max-width: 400px) {
+  .button-grid {
+    width: 240px;
+    gap: 20px;
+  }
+  .button-grid a {
+    width: 70px;
+    height: 70px;
+  }
+  .button-grid a svg {
+    width: 60%;
+    height: 60%;
+  }
+}
+</style>
+</head>
+<body>
+
+<h1>Welcome</h1>
+
+<div class="button-grid">
+  <a href="seite1.html" title="Seite 1">
+    <!-- SVG hier einfügen -->
+    <!-- Beispiel: <svg>...</svg> -->
+  </a>
+  <a href="seite2.html" title="Seite 2">
+    <!-- SVG hier einfügen -->
+  </a>
+  <a href="seite3.html" title="Seite 3">
+    <!-- SVG hier einfügen -->
+  </a>
+  <a href="seite4.html" title="Seite 4">
+    <!-- SVG hier einfügen -->
+  </a>
+</div>
+
+</body>
+</html>
