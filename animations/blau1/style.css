@@ -10,29 +10,33 @@
   --dark-color: #000;
 }
 
+/* Body für Hintergrund und Perspektive */
 body {
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
+  margin: 0; /* wichtig: entfernt Standard-Margin */
+  padding: 0;
   min-height: 100vh;
   background-color: var(--dark-color);
   overflow: hidden;
   perspective: 1000px;
+  position: relative; /* für z-index Bezug der Balken */
 }
 
+/* Balken */
 .black-bar {
-  position: fixed;
+  position: fixed; /* fixiert am Viewport */
   left: 0;
   width: 100%;
-  height: 50px; /* Höhe des Balkens, kannst du anpassen */
+  height: 50px; /* Höhe anpassen */
   background-color: black;
-  z-index: 1000; /* damit die Blumen drunter bleiben */
+  z-index: 1000; /* immer über allem */
 }
 
+/* Obere Bar */
 .black-bar.top {
   top: 0;
 }
 
+/* Untere Bar */
 .black-bar.bottom {
   bottom: 0;
 }
