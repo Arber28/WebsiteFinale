@@ -24,8 +24,10 @@ body {
 
 h1 {
   margin-bottom: 30px;
-  font-size: 30px;
+  font-size: 28px;
   font-weight: 500;
+  color: white;
+  letter-spacing: 1px;
 }
 
 /* Button Container vertikal */
@@ -33,22 +35,22 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 25px;
-  width: 200px; /* Breite der Buttons */
+  gap: 30px;
+  width: 240px; /* breitere Buttons */
 }
 
 /* Buttons */
 .button-grid a {
-  width: 100%;      /* volle Breite der Container */
-  padding: 20px 0;  /* Höhe der Buttons */
-  border-radius: 20px; /* leicht abgerundet */
+  width: 100%;        /* volle Breite */
+  padding: 25px 0;    /* größere Höhe */
+  border-radius: 25px; /* etwas runder */
   background-color: rgba(255,255,255,0.8); /* Transparenz 0.8 */
   display: flex;
   justify-content: center;
   align-items: center;
   text-decoration: none;
   color: #FFC0CB;
-  font-size: 36px; /* falls du Emojis/Icons benutzt */
+  font-size: 40px; /* passt für Icons */
   border: 2px solid white;
   transition: transform 0.1s, background 0.2s;
 }
@@ -71,23 +73,27 @@ h1 {
 /* Mobile */
 @media (max-width: 400px) {
   .button-grid {
-    width: 160px;
-    gap: 15px;
+    width: 180px;
+    gap: 20px;
   }
   .button-grid a {
-    font-size: 28px;
-    padding: 15px 0;
+    font-size: 32px;
+    padding: 20px 0;
   }
   .button-grid a svg {
     width: 60%;
     height: 60%;
+  }
+  h1 {
+    font-size: 22px;
+    margin-bottom: 25px;
   }
 }
 </style>
 </head>
 <body>
 
-<h1>Welcome</h1>
+<h1>Home</h1>
 
 <div class="button-grid">
   <a href="seite1.html" title="Seite 1">
