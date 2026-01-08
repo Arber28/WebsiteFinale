@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Home</title>
+<title>Pick a Surprise</title>
 <style>
 html, body {
   margin: 0;
@@ -35,26 +35,33 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 35px;   /* etwas mehr Abstand zwischen Buttons */
-  width: 280px; /* Breite der Buttons */
+  gap: 35px;   
+  width: 280px; 
 }
 
 /* Buttons */
 .button-grid a {
   width: 100%;
-  padding: 35px 0;    /* HÖHERE Buttons */
+  padding: 35px 0;    
   border-radius: 25px;
   background-color: rgba(255,255,255,0.8);
   display: flex;
   justify-content: center;
   align-items: center;
   text-decoration: none;
-  color: #FFC0CB;
-  font-size: 40px; /* passt für Icons */
   border: 2px solid white;
   transition: transform 0.1s, background 0.2s;
+  overflow: hidden; /* sehr wichtig, damit große SVGs nicht rausfallen */
 }
 
+/* SVG Images */
+.button-grid a img {
+  max-width: 60%;   /* SVG maximal 60% der Buttonbreite */
+  max-height: 60%;  /* SVG maximal 60% der Buttonhöhe */
+  object-fit: contain; /* skaliert sauber proportional */
+}
+
+/* Hover / Active */
 .button-grid a:hover {
   background-color: rgba(255,255,255,1);
   transform: scale(1.05);
@@ -64,12 +71,6 @@ h1 {
   transform: scale(0.95);
 }
 
-/* SVGs innerhalb der Buttons */
-.button-grid a svg {
-  width: 50%;
-  height: 50%;
-}
-
 /* Mobile */
 @media (max-width: 400px) {
   .button-grid {
@@ -77,12 +78,11 @@ h1 {
     gap: 25px;
   }
   .button-grid a {
-    font-size: 32px;
-    padding: 30px 0; /* höher auf kleineren Bildschirmen */
+    padding: 30px 0;
   }
-  .button-grid a svg {
-    width: 60%;
-    height: 60%;
+  .button-grid a img {
+    max-width: 60%;
+    max-height: 60%;
   }
   h1 {
     font-size: 22px;
