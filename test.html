@@ -2,47 +2,47 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="theme-color" content="#000000">
-  <title>Zufällige Blumen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Random Animation Loader</title>
   <style>
+    /* Vollbild iFrame */
     html, body {
       margin: 0;
       padding: 0;
-      height: 100%;
       width: 100%;
+      height: 100%;
       background-color: black;
       overflow: hidden;
-      font-family: sans-serif;
     }
-
     iframe {
-      border: none;
       width: 100%;
       height: 100%;
-      display: block;
+      border: none;
     }
 
-    /* Buttons Style */
+    /* Button Container */
     .top-buttons {
       position: fixed;
-      top: 15px;
+      top: 20px;
+      left: 0;
       width: 100%;
       display: flex;
       justify-content: space-between;
-      padding: 0 15px;
-      z-index: 10000;
-      pointer-events: none;
+      padding: 0 20px;
+      pointer-events: none; /* damit nur Buttons klickbar sind */
+      z-index: 2000;
     }
 
+    /* Buttons Style */
     .top-buttons button {
       pointer-events: auto;
-      background-color: rgba(0,0,0,0.7);
+      background-color: rgba(255, 20, 147, 0.9); /* Pink */
       color: white;
       border: none;
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      font-size: 20px;
+      width: 80px;       /* Größe */
+      height: 80px;      /* Größe */
+      border-radius: 50%; /* rund */
+      font-size: 36px;    /* Icongröße */
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -51,51 +51,42 @@
     }
 
     .top-buttons button:hover {
-      background-color: rgba(255,255,255,0.2);
+      background-color: rgba(255, 20, 147, 1);
     }
   </style>
 </head>
 <body>
+  <!-- Buttons -->
+  <div class="top-buttons">
+    <button id="back-btn">←</button>
+    <button id="reload-btn">⟳</button>
+  </div>
 
-<div class="top-buttons">
-  <button id="backBtn">&#8592;</button>
-  <button id="reloadBtn">&#10227;</button>
-</div>
+  <!-- iFrame -->
+  <iframe id="animation-frame"></iframe>
 
-<iframe id="flowerFrame"></iframe>
+  <script>
+    // Liste deiner Animationen
+    const animations = [
+      'animations/blau1/index.html',
+      'animations/blau2/index.html',
+      'animations/gelb1/index.html',
+      'animations/orange1/index.html'
+      // hier weitere hinzufügen
+    ];
 
-<script>
-  // Liste deiner Unterordner
-  const folders = [
-    "animations/blau1",
-    "animations/blau2",
-    "animations/gelb1",
-    "animations/orange1"
-    // ... hier beliebig weitere hinzufügen
-  ];
+    // Zufällige Auswahl beim Laden
+    const randomAnimation = animations[Math.floor(Math.random() * animations.length)];
+    document.getElementById('animation-frame').src = randomAnimation;
 
-  function getRandomHtmlFromFolder(folder) {
-    return folder + "/index.html";
-  }
+    // Button Funktionen
+    document.getElementById('back-btn').addEventListener('click', () => {
+      history.back();
+    });
 
-  function loadRandomFlower() {
-    const randomFolderIndex = Math.floor(Math.random() * folders.length);
-    const chosenFolder = folders[randomFolderIndex];
-    const chosenPage = getRandomHtmlFromFolder(chosenFolder);
-    document.getElementById("flowerFrame").src = chosenPage;
-  }
-
-  loadRandomFlower();
-
-  // Buttons
-  document.getElementById("backBtn").addEventListener("click", () => {
-    window.history.back();
-  });
-
-  document.getElementById("reloadBtn").addEventListener("click", () => {
-    loadRandomFlower();
-  });
-</script>
-
+    document.getElementById('reload-btn').addEventListener('click', () => {
+      document.getElementById('animation-frame').contentWindow.location.reload();
+    });
+  </script>
 </body>
 </html>
