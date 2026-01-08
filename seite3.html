@@ -120,11 +120,13 @@
 <button class="next-btn" onclick="nextQuote()">Next</button>
 
 <script>
-  // Back-Button zurück zur Home-Seite
-  document.getElementById('back-home').addEventListener('click', function(e){
+<!-- Back-Button -->
+<a id="back-home">←</a>
+<script>
+document.getElementById('back-home').addEventListener('click', function(e){
     e.preventDefault();
-    window.location.href = './home.html'; // Pfad anpassen
-  });
+    window.location.href = './home.html';
+});
 
   // Quotes für Next-Button
   const quotes = [
