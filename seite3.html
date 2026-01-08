@@ -5,20 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Seite 3 - Kärtchen</title>
 <style>
-  /* Grundsetup */
   html, body {
     height: 100%;
     margin: 0;
     padding: 0;
     overflow: hidden;
+    font-family: sans-serif;
+    background-color: #ff69b4; /* Pinker Hintergrund */
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #000; /* Schwarzer Hintergrund wie auf anderen Seiten */
-    font-family: sans-serif;
   }
 
-  /* Zurück-Button */
+  /* Zurück-Button oben links */
   .back-btn {
     position: fixed;
     top: 20px;
@@ -36,17 +36,24 @@
     z-index: 1000;
     opacity: 0.7;
   }
+  .back-btn:hover { opacity: 1; }
+
+  /* Überschrift über Kärtchen */
+  .card-title {
+    font-size: 2em;
+    color: #fff;
+    margin-bottom: 20px;
+    text-align: center;
+  }
 
   /* Kärtchen */
   .card-container {
     position: relative;
-    width: 60vw;      /* Breite 60% vom Viewport */
-    max-width: 600px;  /* Maximalbreite */
-    aspect-ratio: 3 / 2; /* 3:2 Proportion */
-    background-color: #111; /* Dunkelgrau für die Karte */
-    border: 5px solid pink; /* Rahmen innen */
+    width: 60vw; 
+    max-width: 600px;
+    aspect-ratio: 3 / 2;
+    background-color: #fff; /* Weißes Kärtchen */
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -54,37 +61,44 @@
     box-sizing: border-box;
   }
 
-  .card-title {
-    font-size: 1.5em;
-    color: pink;
-    margin-bottom: 20px;
+  /* Innen-Rahmen als PNG */
+  .card-container::after {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    background-image: url('rahmen.png'); /* hier dein PNG */
+    background-size: cover;
+    pointer-events: none;
   }
 
+  /* Text mittig */
   .card-text {
-    font-size: 1.2em;
-    color: #fff;
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    font-size: 1.5em;
+    z-index: 1; /* Über dem Rahmen */
   }
 
+  /* Reload/Next Button */
   .next-btn {
-    margin-top: 20px;
-    padding: 12px 24px;
-    border: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     background-color: pink;
     color: white;
     font-size: 24px;
     cursor: pointer;
     opacity: 0.7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
   }
-
-  /* Hover-Effekt */
-  .next-btn:hover, .back-btn:hover {
-    opacity: 1;
-  }
+  .next-btn:hover { opacity: 1; }
 </style>
 </head>
 <body>
@@ -92,12 +106,16 @@
 <!-- Zurück-Button -->
 <div class="back-btn" onclick="history.back()">←</div>
 
+<!-- Überschrift -->
+<div class="card-title">Dinge, die ich an dir liebe</div>
+
 <!-- Kärtchen -->
 <div class="card-container">
-  <div class="card-title">Dinge, die ich an dir liebe</div>
   <div class="card-text" id="quote">Du bringst mich immer zum Lachen.</div>
-  <button class="next-btn" onclick="nextQuote()">↻</button>
 </div>
+
+<!-- Reload/Next Button -->
+<button class="next-btn" onclick="nextQuote()">↻</button>
 
 <script>
   const quotes = [
@@ -117,7 +135,7 @@
     let nextIndex;
     do {
       nextIndex = Math.floor(Math.random() * quotes.length);
-    } while(nextIndex === current); // nicht dasselbe Zitat hintereinander
+    } while(nextIndex === current);
     quoteEl.textContent = quotes[nextIndex];
   }
 </script>
