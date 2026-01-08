@@ -15,9 +15,11 @@ body {
   align-items: flex-end;
   justify-content: center;
   min-height: 100vh;
-  background-color: linear-gradient(#000, #000);
   overflow: hidden;
   perspective: 1000px;
+  background-image: linear-gradient(#000, #000); /* komplett schwarz, füllt alles */
+  margin: 0;
+  padding: 0;
 }
 
 .night {
