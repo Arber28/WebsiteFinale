@@ -2,19 +2,18 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Seite 3 - Dinge die ich an dir liebe</title>
 <style>
   body {
     margin: 0;
     padding: 0;
     background: #FFC0CB;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    height: 100vh;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     overflow: hidden;
     position: relative;
   }
@@ -22,11 +21,11 @@
   /* Zurück-Button wie auf Seite 1/2 */
   #back-home {
     position: absolute;
-    top: 20px;
-    left: 20px;
+    top: 15px;
+    left: 15px;
     z-index: 1000;
-    width: 60px;
-    height: 60px;
+    width: 45px;
+    height: 45px;
     background: rgba(255,255,255,0.8);
     color: #FFC0CB;
     border-radius: 50%;
@@ -34,41 +33,58 @@
     justify-content: center;
     align-items: center;
     font-weight: bold;
-    font-size: 28px;
+    font-size: 24px;
     text-decoration: none;
     box-shadow: 0 4px 12px rgba(0,0,0,0.25);
     transition: transform 0.15s, box-shadow 0.15s;
   }
-
   #back-home:hover {
     transform: scale(1.1);
     box-shadow: 0 6px 15px rgba(0,0,0,0.3);
   }
 
+  /* Zentraler Container für alles */
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90vw;
+    max-width: 450px;
+    height: 90vh;
+    box-sizing: border-box;
+  }
+
   h1 {
-    margin-top: 40px;
-    margin-bottom: 20px;
-    font-size: 24px;
+    margin: 0 0 15px 0;
+    font-size: 22px;
     color: white;
     text-align: center;
   }
 
   .card-container {
     position: relative;
-    width: 90vw;
-    max-width: 400px;
+    width: 100%;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .card {
+    width: 100%;
     aspect-ratio: 3/2;
     background: white;
     border-radius: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
     padding: 20px;
     box-sizing: border-box;
   }
 
-  /* Innen-Rahmen PNG */
-  .card-container img.frame {
+  .card img.frame {
     position: absolute;
     top: 5px;
     left: 5px;
@@ -82,15 +98,15 @@
   .card-text {
     position: relative;
     z-index: 20;
-    font-size: 20px;
+    font-size: 18px;
     text-align: center;
     color: #333;
   }
 
   #next-btn {
-    margin-top: 20px;
-    padding: 12px 24px;
-    font-size: 20px;
+    margin-top: 15px;
+    padding: 12px 28px;
+    font-size: 18px;
     background: white;
     color: #FFC0CB;
     border: none;
@@ -109,19 +125,20 @@
 </head>
 <body>
 
-<!-- Zurück-Button -->
 <a id="back-home" href="./home.html">←</a>
 
-<h1>Dinge die ich an dir liebe</h1>
+<div class="container">
+  <h1>Dinge die ich an dir liebe</h1>
 
-<!-- Kärtchen -->
-<div class="card-container">
-  <div class="card-text" id="quote">Du bringst mich immer zum Lachen.</div>
-  <img src="rahmen.png" class="frame" alt="Rahmen">
+  <div class="card-container">
+    <div class="card">
+      <div class="card-text" id="quote">Du bringst mich immer zum Lachen.</div>
+      <img src="rahmen.png" class="frame" alt="Rahmen">
+    </div>
+  </div>
+
+  <button id="next-btn">Next</button>
 </div>
-
-<!-- Next-Button -->
-<button id="next-btn">Next</button>
 
 <script>
 const quotes = [
