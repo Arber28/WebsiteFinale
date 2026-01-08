@@ -48,17 +48,17 @@ h1 {
 /* Keypad 3x4 mit festen, perfekt runden Buttons */
 .keypad {
   display: grid;
-  grid-template-columns: repeat(3, 70px); /* 3 Spalten, feste Breite */
-  grid-template-rows: repeat(4, 70px);    /* 4 Reihen, gleiche Höhe */
-  justify-content: center;                /* zentriert das Keypad */
-  gap: 20px;                              /* Abstand zwischen Buttons */
+  grid-template-columns: repeat(3, 70px);
+  grid-template-rows: repeat(4, 70px);
+  justify-content: center;
+  gap: 20px;
   margin-top: 30px;
 }
 
 .keypad button {
   width: 70px;
   height: 70px;
-  border-radius: 50%;       /* garantiert rund */
+  border-radius: 50%;
   border: 2px solid white;
   font-size: 24px;
   font-weight: 600;
@@ -66,7 +66,7 @@ h1 {
   background: rgba(255, 255, 255, 0.6);
   display: flex;
   justify-content: center;
-  align-items: center;      /* Zahl perfekt mittig */
+  align-items: center;
   cursor: pointer;
   transition: background 0.2s ease, transform 0.1s ease;
 }
@@ -93,7 +93,7 @@ h1 {
   animation: shake 0.35s;
 }
 
-/* Responsive Anpassung für kleine Geräte */
+/* Kleine Bildschirme anpassen */
 @media (max-width: 400px) {
   .keypad {
     grid-template-columns: repeat(3, 60px);
