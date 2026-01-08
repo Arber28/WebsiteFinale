@@ -18,49 +18,49 @@
     align-items: center;
   }
 
-  /* Zurück-Button oben links */
+  /* Zurück-Button wie auf Seite 1 & 2 */
   .back-btn {
     position: fixed;
     top: 20px;
     left: 20px;
-    width: 60px;
-    height: 60px;
-    background: #FFC0CB;
-    border: 3px solid #fff; /* sichtbarer Rahmen */
+    width: 80px;
+    height: 80px;
+    background-color: #FFC0CB;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 28px;
+    font-size: 36px;
     color: #fff;
     cursor: pointer;
     z-index: 1000;
-    opacity: 0.8;
+    opacity: 0.7;
+    border: none;
   }
   .back-btn:hover { opacity: 1; }
 
   /* Überschrift über Kärtchen */
   .card-title {
-    font-size: 1.8em; /* kleiner */
+    font-size: 1.8em; 
     color: #fff;
-    margin-bottom: 60px; /* höher über dem Kärtchen */
+    margin-bottom: 60px; 
     text-align: center;
   }
 
   /* Kärtchen */
   .card-container {
     position: relative;
-    width: 90vw; /* fast an den Rand */
+    width: 90vw; 
     max-width: 800px;
     aspect-ratio: 3 / 2;
-    background-color: #fff; /* Weißes Kärtchen */
+    background-color: #fff; 
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     padding: 20px;
     box-sizing: border-box;
-    border-radius: 25px; /* Abgerundet */
+    border-radius: 25px; 
   }
 
   /* Innen-Rahmen als PNG */
@@ -71,7 +71,7 @@
     left: 5px;
     right: 5px;
     bottom: 5px;
-    background-image: url('rahmen.png'); /* PNG hier einfügen */
+    background-image: url('rahmen.png'); 
     background-size: cover;
     pointer-events: none;
     border-radius: 25px;
@@ -79,17 +79,17 @@
 
   /* Text mittig */
   .card-text {
-    font-size: 1.2em; /* etwas kleiner */
-    z-index: 1; /* Über dem Rahmen */
+    font-size: 1.2em; 
+    z-index: 1; 
   }
 
   /* Next-Button unter dem Kärtchen */
   .next-btn {
     margin-top: 20px;
-    padding: 20px 40px; /* größer */
+    padding: 20px 40px; 
     border-radius: 50px;
-    background-color: #fff; /* weiß */
-    color: #FFC0CB; /* Text pink */
+    background-color: #fff; 
+    color: #FFC0CB; 
     font-size: 1.2em;
     cursor: pointer;
     border: none;
