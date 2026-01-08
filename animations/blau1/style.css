@@ -22,15 +22,7 @@ html,body {
   padding: 0;
 }
 
-.background-black {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: #000;
-  z-index: 0; /* hoch genug, um über alles zu liegen */
-}
+
 
 .night {
   z-index: 1; /* sicherstellen, dass die Effekte darüber liegen */
