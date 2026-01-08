@@ -25,24 +25,29 @@
     /* Buttons Style */
     .top-buttons {
       position: fixed;
-      top: 10px;
+      top: 15px;
       width: 100%;
       display: flex;
       justify-content: space-between;
-      padding: 0 10px;
-      pointer-events: none; /* verhindert, dass Buttons den Content blockieren */
+      padding: 0 15px;
       z-index: 10000;
+      pointer-events: none;
     }
 
     .top-buttons button {
-      pointer-events: auto; /* Buttons trotzdem klickbar */
-      background-color: rgba(0,0,0,0.6);
+      pointer-events: auto;
+      background-color: rgba(0,0,0,0.7);
       color: white;
       border: none;
-      padding: 10px 15px;
-      border-radius: 5px;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      font-size: 20px;
       cursor: pointer;
-      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
     }
 
     .top-buttons button:hover {
@@ -53,8 +58,8 @@
 <body>
 
 <div class="top-buttons">
-  <button id="backBtn">Zurück</button>
-  <button id="reloadBtn">Neu Laden</button>
+  <button id="backBtn">&#8592;</button>
+  <button id="reloadBtn">&#10227;</button>
 </div>
 
 <iframe id="flowerFrame"></iframe>
@@ -70,7 +75,6 @@
   ];
 
   function getRandomHtmlFromFolder(folder) {
-    // Standard HTML-Dateiname in jedem Ordner
     return folder + "/index.html";
   }
 
