@@ -10,10 +10,6 @@
   --dark-color: #000;
 }
 
-:root {
-  --dark-color: #000; /* schon gesetzt, passt */
-}
-
 body {
   display: flex;
   align-items: flex-end;
