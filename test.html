@@ -23,26 +23,26 @@
     /* Button Container */
     .top-buttons {
       position: fixed;
-      top: 20px;
+      top: 10px;   /* Abstand vom oberen Rand */
       left: 0;
       width: 100%;
       display: flex;
       justify-content: space-between;
-      padding: 0 20px;
-      pointer-events: none; /* damit nur Buttons klickbar sind */
+      padding: 0 10px; /* Abstand von links/rechts */
+      pointer-events: none;
       z-index: 2000;
     }
 
     /* Buttons Style */
     .top-buttons button {
       pointer-events: auto;
-      background-color: rgba(255, 20, 147, 0.9); /* Pink */
+      background-color: rgba(255, 20, 147, 0.7); /* Pink 70% */
       color: white;
       border: none;
-      width: 80px;       /* Größe */
-      height: 80px;      /* Größe */
-      border-radius: 50%; /* rund */
-      font-size: 36px;    /* Icongröße */
+      width: 72px;       /* 10% kleiner (war 80px) */
+      height: 72px;      /* 10% kleiner */
+      border-radius: 50%;
+      font-size: 32px;    /* Icongröße etwas kleiner */
       cursor: pointer;
       display: flex;
       align-items: center;
