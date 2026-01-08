@@ -32,9 +32,9 @@ body {
   z-index: 0; /* damit es unter .night liegt */
 }
 
-.night {
+/* .night {
   z-index: 1; /* sicherstellen, dass die Effekte darüber liegen */
-}
+/*} */
 
 .flowers {
   z-index: 2; /* Blumen liegen oben */
