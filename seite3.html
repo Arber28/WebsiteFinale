@@ -47,10 +47,10 @@
   /* Überschrift leicht über der Karte */
   .title {
     font-size: 1.5rem;
+    margin-bottom: 80px; /* Abstand zur Karte */
     font-weight: bold;
     color: #fff;
     text-align: center;
-    margin-bottom: 20px; /* Abstand zur Karte */
     z-index: 2;
     position: relative;
   }
@@ -58,6 +58,7 @@
   /* Container für Karte + Text */
   .karte-container {
     position: relative;
+    margin-top: -20px; /* negative Werte verschieben nach oben */
     display: flex;
     justify-content: center; /* horizontal mittig */
     align-items: center;     /* vertikal mittig innerhalb Container */
@@ -88,7 +89,7 @@
   /* Next-Button unten */
   #next-button {
     position: absolute;
-    bottom: 120px; /* etwas höher */
+    bottom: 150px; /* etwas höher */
     width: 150px;
     height: 50px;
     background: rgba(255,255,255,0.7);
