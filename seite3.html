@@ -6,12 +6,13 @@
 <title>Seite 3</title>
 <style>
   body {
-    margin:0;
-    padding:0;
-    height:100vh;
-    display:flex;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center; /* gesamter Inhalt mittig */
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     background: #FFC0CB;
     position: relative;
@@ -38,39 +39,56 @@
     transition: transform 0.15s, box-shadow 0.15s;
   }
 
-  /* Überschrift */
+  #back-home:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+  }
+
+  /* Überschrift leicht über der Karte */
   .title {
-    margin-top: 150px;
     font-size: 1.5rem;
     font-weight: bold;
     color: #fff;
     text-align: center;
+    margin-bottom: 20px; /* Abstand zur Karte */
+    z-index: 2;
+    position: relative;
   }
 
-  /* Mittige Box mit 3:2 Ratio und leichten Abrundungen */
-  .love-box {
-    position: absolute;
-    top: 25%;                 /* vertikal in die Mitte */
-    width: 80%;
-    max-width: 350px;
-    aspect-ratio: 3 / 2;
-    background: white;
-    border-radius: 30px; /* feste Abrundung */
-    margin: 60px 0;
+  /* Container für Karte + Text */
+  .karte-container {
+    position: relative;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2rem;
-    text-align: center;
-    padding: 20px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    overflow: hidden;
+    justify-content: center; /* horizontal mittig */
+    align-items: center;     /* vertikal mittig innerhalb Container */
   }
 
-  /* Unten Button im gleichen Theme wie Back-Button */
+  /* Karte.png */
+  #karte {
+    max-width: 90%;
+    max-height: 70vh;
+    object-fit: contain;
+    z-index: 1;
+  }
+
+  /* Text auf der Karte */
+  #quote {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #000; /* schwarz */
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px 20px;
+    z-index: 2;
+  }
+
+  /* Next-Button unten */
   #next-button {
     position: absolute;
-    bottom: 150px;
+    bottom: 120px; /* etwas höher */
     width: 150px;
     height: 50px;
     background: rgba(255,255,255,0.7);
@@ -86,6 +104,7 @@
     text-decoration: none;
     box-shadow: 0 4px 12px rgba(0,0,0,0.25);
     transition: transform 0.15s, box-shadow 0.15s;
+    z-index: 100;
   }
 
   #next-button:hover {
@@ -98,12 +117,16 @@
 
 <a id="back-home" href="./home.html">←</a>
 
+<!-- Überschrift -->
 <div class="title">Dinge die ich an dir liebe:</div>
 
-<div class="love-box" id="quote-box">
-  Lade...
+<!-- Karte + Text Container -->
+<div class="karte-container">
+  <img id="karte" src="Karte.png" alt="Karte">
+  <div id="quote">Lade...</div>
 </div>
 
+<!-- Next-Button -->
 <a id="next-button">Next</a>
 
 <script>
@@ -121,8 +144,9 @@ const quotes = [
 ];
 
 function newQuote() {
+  const quoteDiv = document.getElementById('quote');
   const randomIndex = Math.floor(Math.random() * quotes.length);
-  document.getElementById('quote-box').innerText = quotes[randomIndex];
+  quoteDiv.innerText = quotes[randomIndex];
 }
 
 document.getElementById('next-button').addEventListener('click', newQuote);
