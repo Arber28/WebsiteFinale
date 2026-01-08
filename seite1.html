@@ -36,23 +36,35 @@ body {
 </head>
 <body>
   
-  <!-- Zurück-Button -->
-<a href="home.html" style="
+  <!-- Zurück-Button mit JS, garantiert Home -->
+<a id="back-home" style="
   position: absolute;
   top: 20px;
   left: 20px;
   z-index: 1000;
+  width: 50px;
+  height: 50px;
   background: rgba(255,255,255,0.8);
   color: #FFC0CB;
-  padding: 10px 15px;
-  border-radius: 8px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-weight: bold;
+  font-size: 24px;
   text-decoration: none;
-  font-size: 18px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  transition: transform 0.15s, box-shadow 0.15s;
 ">
 ←
 </a>
+
+<script>
+document.getElementById('back-home').addEventListener('click', function(e){
+    e.preventDefault(); // verhindert Standardverhalten
+    window.location.href = './home.html'; // springt garantiert zu home.html
+});
+</script>
   
 <div id="flipbook">
   <div class="hard">Cover</div>
