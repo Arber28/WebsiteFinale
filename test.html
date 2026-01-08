@@ -20,20 +20,18 @@
       border: none;
     }
 
-    /* Button Container */
-    .top-buttons {
-      position: fixed;
-      top: 10px;           /* Abstand vom oberen Rand */
-      left: 0;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      padding: 100 0px;     /* Abstand links/rechts, damit Buttons komplett sichtbar sind */
-      pointer-events: none;
-      z-index: 2000;
+.top-buttons {
+  position: fixed;
+  top: 10px;          /* Abstand vom oberen Rand */
+  left: 10px;         /* Abstand für linken Button */
+  width: calc(100% - 20px); /* Platz für rechten Button */
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 2000;
 }
-    /* Buttons Style */
-    .top-buttons button {
+
+.top-buttons button {
   pointer-events: auto;
   background-color: rgba(255, 20, 147, 0.7);
   color: white;
@@ -47,7 +45,7 @@
   align-items: center;
   justify-content: center;
   transition: background 0.2s;
-  }
+}
 
     .top-buttons button:hover {
       background-color: rgba(255, 20, 147, 1);
