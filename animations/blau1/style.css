@@ -14,6 +14,13 @@ html, body {
     background-color: var(--dark-color);
 }
 
+.content-wrapper {
+  width: auto;
+  height: 100%; /* füllt den Bildschirm vertikal */
+  max-width: calc(100vh * 9 / 18); /* 9:18 Ratio */
+  background: transparent; /* dein Content ist hier drin */
+}
+
 :root {
   --dark-color: #000;
 }
