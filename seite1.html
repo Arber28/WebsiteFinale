@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flipbook</title>
+<style>
+html, body {
+  margin: 0;
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #FFC0CB;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.flipbook-container {
+  width: 90%;
+  max-width: 350px;  /* max Breite für Handy */
+  height: 70vh;      /* Höhe für Handy */
+  perspective: 1500px; /* für 3D Flip */
+  position: relative;
+}
+
+.page {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border-radius: 12px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  transition: transform 0.6s ease;
+}
+
+/* Vorder- und Rückseite */
+.page:nth-child(1) { z-index: 4; }
+.page:nth-child(2) { transform: rotateY(-180deg); z-index: 3; }
+.page:nth-child(3) { transform: rotateY(-180deg); z-index: 2; }
+.page:nth-child(4) { transform: rotateY(-180deg); z-index: 1; }
+
+/* Buttons zum Umblättern */
+.controls {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.controls button {
+  padding: 12px 20px;
+  border-radius: 25px;
+  border: none;
+  background-color: rgba(255,255,255,0.8);
+  font-weight: bold;
+  color: #FFC0CB;
+  font-size: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: 0.2s;
+}
+
+.controls button:hover {
+  background-color: rgba(255,255,255,1);
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<div class="flipbook-container">
+  <div class="page" id="page1">Seite 1</div>
+  <div class="page" id="page2">Seite 2</div>
+  <div class="page" id="page3">Seite 3</div>
+  <div class="page" id="page4">Seite 4</div>
+</div>
+
+<div class="controls">
+  <button onclick="prevPage()">← Prev</button>
+  <button onclick="nextPage()">Next →</button>
+</div>
+
+<script>
+let current = 0;
+const pages = document.querySelectorAll('.page');
+
+function updateFlip() {
+  pages.forEach((page, index) => {
+    if(index < current) {
+      page.style.transform = 'rotateY(-180deg)';
+    } else {
+      page.style.transform = 'rotateY(0deg)';
+    }
+  });
+}
+
+function nextPage() {
+  if(current < pages.length) {
+    current++;
+    updateFlip();
+  }
+}
+
+function prevPage() {
+  if(current > 0) {
+    current--;
+    updateFlip();
+  }
+}
+</script>
+
+</body>
+</html>
