@@ -1,89 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Random Animation Loader</title>
-  <style>
-    /* Vollbild iFrame */
-    html, body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      background-color: black;
-      overflow: hidden;
-    }
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Random Blumen</title>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    background-color: black;
+  }
 
-.top-buttons {
-  position: fixed;
-  top: 10px;          /* Abstand vom oberen Rand */
-  left: 10px;         /* Abstand für linken Button */
-  width: calc(100% - 20px); /* Platz für rechten Button */
-  display: flex;
-  justify-content: space-between;
-  pointer-events: none;
-  z-index: 2000;
-}
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
 
-.top-buttons button {
-  pointer-events: auto;
-  background-color: rgba(255, 20, 147, 0.5);
-  color: white;
-  border: none;
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  font-size: 32px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s;
-}
+  .top-buttons {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    width: calc(100% - 20px);
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+    z-index: 2000;
+  }
 
-    .top-buttons button:hover {
-      background-color: rgba(255, 20, 147, 1);
-    }
-  </style>
+  .top-buttons button {
+    pointer-events: auto;
+    background-color: rgba(255, 20, 147, 0.7); /* pink 70% */
+    color: white;
+    border: none;
+    width: 60px;   /* Größe wie auf Seite1 */
+    height: 60px;  /* Größe wie auf Seite1 */
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+
+  .top-buttons button:hover {
+    background-color: rgba(255, 20, 147, 1);
+  }
+</style>
 </head>
 <body>
-  <!-- Buttons -->
-  <div class="top-buttons">
-    <button id="back-btn">←</button>
-    <button id="reload-btn">⟳</button>
-  </div>
 
-  <!-- iFrame -->
-  <iframe id="animation-frame"></iframe>
+<div class="top-buttons">
+  <button onclick="history.back()">←</button>
+  <button onclick="location.reload()">⟳</button>
+</div>
 
-  <script>
-    // Liste deiner Animationen
-    const animations = [
-      'animations/blau1/index.html',
-      'animations/blau2/index.html',
-      'animations/gelb1/index.html',
-      'animations/orange1/index.html'
-      // hier weitere hinzufügen
-    ];
+<iframe id="randomFrame"></iframe>
 
-    // Zufällige Auswahl beim Laden
-    const randomAnimation = animations[Math.floor(Math.random() * animations.length)];
-    document.getElementById('animation-frame').src = randomAnimation;
+<script>
+  const folders = [
+    "animations/blau1/index.html",
+    "animations/blau2/index.html",
+    "animations/gelb1/index.html",
+    "animations/orange1/index.html"
+    // weitere Pfade hinzufügen
+  ];
 
-    // Button Funktionen
-    document.getElementById('back-btn').addEventListener('click', () => {
-      history.back();
-    });
+  const iframe = document.getElementById("randomFrame");
+  const randomIndex = Math.floor(Math.random() * folders.length);
+  iframe.src = folders[randomIndex];
+</script>
 
-    document.getElementById('reload-btn').addEventListener('click', () => {
-      document.getElementById('animation-frame').contentWindow.location.reload();
-    });
-  </script>
 </body>
 </html>
