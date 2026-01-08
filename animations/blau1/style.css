@@ -29,7 +29,7 @@ html,body {
   width: 100vw;
   height: 100vh;
   background-color: #000;
-  z-index: 1000; /* hoch genug, um über alles zu liegen */
+  z-index: 0; /* hoch genug, um über alles zu liegen */
 }
 
 .night {
