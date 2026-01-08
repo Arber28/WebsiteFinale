@@ -10,19 +10,11 @@
   --dark-color: #000;
 }
 
-/* WebKit-spezifisch die volle Höhe */
-html {
-  height: -webkit-fill-available;
-}
-body {
-  height: -webkit-fill-available;
-  overflow: hidden; /* kein Scrollen */
-
 body {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  min-height: 100vh;
+  min-height: 100%;
   background-color: var(--dark-color);
   overflow: hidden;
   perspective: 1000px;
