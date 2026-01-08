@@ -3,130 +3,68 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>Flipbook Mobile</title>
+<title>Flipbook Echt</title>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- 3D Flipbook Open Source -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/3dflipbook/dist/flipbook.min.css">
+<script src="https://cdn.jsdelivr.net/npm/3dflipbook/dist/flipbook.min.js"></script>
 
 <style>
-html, body {
+body {
   margin: 0;
   padding: 0;
-  height: 100%;
-  background: #FFC0CB;
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  height: 100vh;
+  background-color: #FFC0CB;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-#flipbook-container {
+#flipbook {
   width: 90vw;
   max-width: 360px;
   height: 75vh;
-  background: white;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
   border-radius: 10px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
-  overflow: hidden;
-  position: relative;
-  touch-action: pan-y;
-}
-
-.page {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 24px;
-  text-align: center;
-  padding: 20px;
-  box-sizing: border-box;
   background: white;
-  transition: transform 0.5s ease, left 0s;
-  border-radius: 10px;
-  backface-visibility: hidden;
-}
-
-.page.active {
-  left: 0;
-  transform: translateX(0%);
-  z-index: 10;
-}
-
-.page.prev {
-  left: -100%;
-  transform: translateX(0%);
-  z-index: 5;
-}
-
-.page.next {
-  left: 100%;
-  transform: translateX(0%);
-  z-index: 5;
-}
-
-/* Optional: kleine Schatten beim Umblättern */
-.page::after {
-  content: "";
-  position: absolute;
-  top:0; left:0;
-  width:100%; height:100%;
-  box-shadow: inset 0 0 25px rgba(0,0,0,0.05);
-  border-radius:10px;
 }
 </style>
 </head>
 <body>
 
-<div id="flipbook-container">
-  <div class="page active">Cover</div>
-  <div class="page next">Seite 1</div>
+<div id="flipbook">
+  <div class="page">Cover</div>
+  <div class="page">Seite 1</div>
   <div class="page">Seite 2</div>
   <div class="page">Seite 3</div>
   <div class="page">Ende</div>
 </div>
 
 <script>
-const pages = document.querySelectorAll('#flipbook-container .page');
-let current = 0;
-
-function showPage(index) {
-  pages.forEach((p, i) => {
-    p.classList.remove('active','prev','next');
-    if(i === index) p.classList.add('active');
-    if(i === index-1) p.classList.add('prev');
-    if(i === index+1) p.classList.add('next');
+$(document).ready(function() {
+  $("#flipbook").flipBook({
+    width: '100%',
+    height: '100%',
+    autoSize: false,
+    pages: [
+      { html: '<div class="page">Cover</div>' },
+      { html: '<div class="page">Seite 1</div>' },
+      { html: '<div class="page">Seite 2</div>' },
+      { html: '<div class="page">Seite 3</div>' },
+      { html: '<div class="page">Ende</div>' }
+    ],
+    controlsProps: {
+      showToolbar: true,
+      showPageNumbers: true
+    },
+    enableSound: false,
+    enableFullscreen: false,
+    responsive: true
   });
-}
-
-let startX = 0;
-let isTouch = false;
-
-const container = document.getElementById('flipbook-container');
-
-container.addEventListener('touchstart', e => {
-  startX = e.touches[0].clientX;
-  isTouch = true;
-});
-
-container.addEventListener('touchmove', e => {
-  if(!isTouch) return;
-  const diff = e.touches[0].clientX - startX;
-  if(diff > 50) { // Swipe nach rechts
-    if(current > 0) current--;
-    showPage(current);
-    isTouch = false;
-  } else if(diff < -50) { // Swipe nach links
-    if(current < pages.length -1) current++;
-    showPage(current);
-    isTouch = false;
-  }
-});
-
-container.addEventListener('touchend', e => {
-  isTouch = false;
 });
 </script>
 
