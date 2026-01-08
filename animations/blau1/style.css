@@ -10,20 +10,29 @@
   --dark-color: #000;
 }
 
+
 html, body {
   width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  overflow: hidden; /* scroll verhindern */
 }
+
 body {
   display: flex;
   align-items: flex-end;
   justify-content: center;
   height: 100vh;
-  background-color: var(--dark-color);
   perspective: 1000px;
+  background-color: var(--dark-color);
+}
+
+.viewport-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* alles außerhalb Viewport abschneiden */
 }
 
 .night {
