@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seite 3 - Kärtchen</title>
+<style>
+  /* Grundsetup */
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000; /* Schwarzer Hintergrund wie auf anderen Seiten */
+    font-family: sans-serif;
+  }
+
+  /* Zurück-Button */
+  .back-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    background: pink;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+    z-index: 1000;
+    opacity: 0.7;
+  }
+
+  /* Kärtchen */
+  .card-container {
+    position: relative;
+    width: 60vw;      /* Breite 60% vom Viewport */
+    max-width: 600px;  /* Maximalbreite */
+    aspect-ratio: 3 / 2; /* 3:2 Proportion */
+    background-color: #111; /* Dunkelgrau für die Karte */
+    border: 5px solid pink; /* Rahmen innen */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .card-title {
+    font-size: 1.5em;
+    color: pink;
+    margin-bottom: 20px;
+  }
+
+  .card-text {
+    font-size: 1.2em;
+    color: #fff;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .next-btn {
+    margin-top: 20px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 50%;
+    background-color: pink;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    opacity: 0.7;
+  }
+
+  /* Hover-Effekt */
+  .next-btn:hover, .back-btn:hover {
+    opacity: 1;
+  }
+</style>
+</head>
+<body>
+
+<!-- Zurück-Button -->
+<div class="back-btn" onclick="history.back()">←</div>
+
+<!-- Kärtchen -->
+<div class="card-container">
+  <div class="card-title">Dinge, die ich an dir liebe</div>
+  <div class="card-text" id="quote">Du bringst mich immer zum Lachen.</div>
+  <button class="next-btn" onclick="nextQuote()">↻</button>
+</div>
+
+<script>
+  const quotes = [
+    "Du bringst mich immer zum Lachen.",
+    "Dein Lächeln ist einfach umwerfend.",
+    "Du bist unglaublich intelligent.",
+    "Deine Art macht alles besser.",
+    "Ich liebe, wie du mich verstehst.",
+    "Du bist meine Ruhe in stürmischen Zeiten.",
+    "Du machst jeden Tag schöner."
+  ];
+
+  const quoteEl = document.getElementById('quote');
+
+  function nextQuote() {
+    let current = quotes.indexOf(quoteEl.textContent);
+    let nextIndex;
+    do {
+      nextIndex = Math.floor(Math.random() * quotes.length);
+    } while(nextIndex === current); // nicht dasselbe Zitat hintereinander
+    quoteEl.textContent = quotes[nextIndex];
+  }
+</script>
+
+</body>
+</html>
