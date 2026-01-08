@@ -26,6 +26,9 @@ h1 {
   font-size: 28px;
   font-weight: 500;
   color: white;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeSlideIn 0.8s forwards;
 }
 
 /* Button Container */
@@ -33,15 +36,18 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;  /* etwas größere Abstände zwischen Buttons */
+  gap: 20px;
   width: 80%;
   max-width: 280px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeSlideIn 0.8s forwards 0.2s; /* leicht verzögert nach Titel */
 }
 
 /* Buttons */
 .button-grid a {
   width: 100%;
-  height: 15vh;       /* etwas kleinere Höhe */
+  height: 15vh;
   min-height: 50px;
   max-height: 100px;
   border-radius: 25px;
@@ -64,24 +70,35 @@ h1 {
   transform: scale(0.95);
 }
 
-/* SVGs in Buttons */
 .button-grid a img {
-  max-width: 45%;   /* SVG etwas kleiner */
+  max-width: 45%;
   max-height: 60%;
   object-fit: contain;
 }
 
-/* Mobile / Responsive */
+/* Animation */
+@keyframes fadeSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile */
 @media (max-width: 400px) {
   .button-grid a {
-    height: 14vh;       /* kleinere Buttons auf kleinen Geräten */
+    height: 14vh;
   }
   .button-grid a img {
-    max-height: 55%;    /* SVGs etwas kleiner */
+    max-height: 55%;
   }
   h1 {
     font-size: 22px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
 }
 </style>
