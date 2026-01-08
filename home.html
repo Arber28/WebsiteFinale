@@ -8,41 +8,42 @@
 html, body {
   margin: 0;
   height: 100%;
-  overflow: hidden;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 body {
   background-color: #FFC0CB;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: white;
-  flex-direction: column;
   text-align: center;
+  overflow: hidden;
 }
 
 h1 {
-  margin-bottom: 30px;
+  margin: 0 0 20px 0;
   font-size: 28px;
   font-weight: 500;
   color: white;
-  letter-spacing: 1px;
 }
 
-/* Button Container vertikal */
+/* Button Container */
 .button-grid {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 35px;   
-  width: 280px; 
+  gap: 15px;  /* Abstand zwischen Buttons */
+  width: 80%;  /* Breite an Bildschirm anpassen */
+  max-width: 280px;
 }
 
 /* Buttons */
 .button-grid a {
   width: 100%;
-  padding: 35px 0;    
+  height: 18vh;  /* Button-Höhe = 18% der Bildschirmhöhe */
+  min-height: 60px;
+  max-height: 120px;
   border-radius: 25px;
   background-color: rgba(255,255,255,0.8);
   display: flex;
@@ -51,17 +52,9 @@ h1 {
   text-decoration: none;
   border: 2px solid white;
   transition: transform 0.1s, background 0.2s;
-  overflow: hidden; /* sehr wichtig, damit große SVGs nicht rausfallen */
+  overflow: hidden;
 }
 
-/* SVG Images */
-.button-grid a img {
-  max-width: 60%;   /* SVG maximal 60% der Buttonbreite */
-  max-height: 60%;  /* SVG maximal 60% der Buttonhöhe */
-  object-fit: contain; /* skaliert sauber proportional */
-}
-
-/* Hover / Active */
 .button-grid a:hover {
   background-color: rgba(255,255,255,1);
   transform: scale(1.05);
@@ -71,22 +64,24 @@ h1 {
   transform: scale(0.95);
 }
 
-/* Mobile */
+/* SVGs in Buttons */
+.button-grid a img {
+  max-width: 50%;
+  max-height: 70%;
+  object-fit: contain;
+}
+
+/* Mobile / Responsive */
 @media (max-width: 400px) {
-  .button-grid {
-    width: 180px;
-    gap: 25px;
-  }
   .button-grid a {
-    padding: 30px 0;
+    height: 16vh;
   }
   .button-grid a img {
-    max-width: 60%;
-    max-height: 60%;
+    max-height: 65%;
   }
   h1 {
     font-size: 22px;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
   }
 }
 </style>
