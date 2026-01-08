@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Random Animation Loader</title>
+  <style>
+    /* Vollbild iFrame */
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background-color: black;
+      overflow: hidden;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+.top-buttons {
+  position: fixed;
+  top: 10px;          /* Abstand vom oberen Rand */
+  left: 10px;         /* Abstand für linken Button */
+  width: calc(100% - 20px); /* Platz für rechten Button */
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 2000;
+}
+
+.top-buttons button {
+  pointer-events: auto;
+  background-color: rgba(255, 20, 147, 0.7);
+  color: white;
+  border: none;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  font-size: 32px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+    .top-buttons button:hover {
+      background-color: rgba(255, 20, 147, 1);
+    }
+  </style>
+</head>
+<body>
+  <!-- Buttons -->
+  <div class="top-buttons">
+    <button id="back-btn">←</button>
+    <button id="reload-btn">⟳</button>
+  </div>
+
+  <!-- iFrame -->
+  <iframe id="animation-frame"></iframe>
+
+  <script>
+    // Liste deiner Animationen
+    const animations = [
+      'animations/blau1/index.html',
+      'animations/blau2/index.html',
+      'animations/gelb1/index.html',
+      'animations/orange1/index.html'
+      // hier weitere hinzufügen
+    ];
+
+    // Zufällige Auswahl beim Laden
+    const randomAnimation = animations[Math.floor(Math.random() * animations.length)];
+    document.getElementById('animation-frame').src = randomAnimation;
+
+    // Button Funktionen
+    document.getElementById('back-btn').addEventListener('click', () => {
+      history.back();
+    });
+
+    document.getElementById('reload-btn').addEventListener('click', () => {
+      document.getElementById('animation-frame').contentWindow.location.reload();
+    });
+  </script>
+</body>
+</html>
