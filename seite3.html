@@ -11,7 +11,7 @@
     padding: 0;
     overflow: hidden;
     font-family: sans-serif;
-    background-color: #FFC0CB; /* Richtiger Pink-Hintergrund */
+    background-color: #FFC0CB; /* Pink */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -23,34 +23,35 @@
     position: fixed;
     top: 20px;
     left: 20px;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     background: #FFC0CB;
+    border: 3px solid #fff; /* sichtbarer Rahmen */
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 24px;
+    font-size: 28px;
     color: #fff;
     cursor: pointer;
     z-index: 1000;
-    opacity: 0.7;
+    opacity: 0.8;
   }
   .back-btn:hover { opacity: 1; }
 
   /* Überschrift über Kärtchen */
   .card-title {
-    font-size: 2em;
+    font-size: 1.8em; /* kleiner */
     color: #fff;
-    margin-bottom: 40px; /* Abstand nach oben erhöhen */
+    margin-bottom: 60px; /* höher über dem Kärtchen */
     text-align: center;
   }
 
   /* Kärtchen */
   .card-container {
     position: relative;
-    width: 60vw;
-    max-width: 600px;
+    width: 90vw; /* fast an den Rand */
+    max-width: 800px;
     aspect-ratio: 3 / 2;
     background-color: #fff; /* Weißes Kärtchen */
     display: flex;
@@ -59,7 +60,7 @@
     text-align: center;
     padding: 20px;
     box-sizing: border-box;
-    border-radius: 20px; /* Abgerundete Ecken */
+    border-radius: 25px; /* Abgerundet */
   }
 
   /* Innen-Rahmen als PNG */
@@ -70,31 +71,32 @@
     left: 5px;
     right: 5px;
     bottom: 5px;
-    background-image: url('rahmen.png'); /* hier dein PNG */
+    background-image: url('rahmen.png'); /* PNG hier einfügen */
     background-size: cover;
     pointer-events: none;
-    border-radius: 20px; /* Rundung mit Kärtchen abstimmen */
+    border-radius: 25px;
   }
 
   /* Text mittig */
   .card-text {
-    font-size: 1.5em;
+    font-size: 1.2em; /* etwas kleiner */
     z-index: 1; /* Über dem Rahmen */
   }
 
   /* Next-Button unter dem Kärtchen */
   .next-btn {
     margin-top: 20px;
-    padding: 15px 30px;
+    padding: 20px 40px; /* größer */
     border-radius: 50px;
-    background-color: #FFC0CB;
-    color: white;
+    background-color: #fff; /* weiß */
+    color: #FFC0CB; /* Text pink */
     font-size: 1.2em;
     cursor: pointer;
     border: none;
-    opacity: 0.7;
+    opacity: 0.9;
   }
   .next-btn:hover { opacity: 1; }
+
 </style>
 </head>
 <body>
