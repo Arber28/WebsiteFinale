@@ -1,0 +1,83 @@
+* {
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(180deg, #FFC0CB 0%, #ffe4ec 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.lockscreen {
+  text-align: center;
+  width: 300px;
+}
+
+h1 {
+  font-size: 20px;
+  margin-bottom: 25px;
+  font-weight: 500;
+  color: white;
+}
+
+.code-dots {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 40px;
+}
+
+.code-dots span {
+  width: 12px;
+  height: 12px;
+  border: 2px solid white;
+  border-radius: 50%;
+  transition: background 0.2s ease;
+}
+
+.code-dots span.filled {
+  background: white;
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.keypad button {
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  font-size: 22px;
+  background: rgba(255, 255, 255, 0.35);
+  color: white;
+  backdrop-filter: blur(6px);
+  cursor: pointer;
+}
+
+.keypad button:active {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.delete {
+  font-size: 18px;
+}
+
+/* iPhone-typischer Fehler-Shake */
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  50% { transform: translateX(6px); }
+  75% { transform: translateX(-6px); }
+  100% { transform: translateX(0); }
+}
+
+.lockscreen.shake {
+  animation: shake 0.35s;
+}
