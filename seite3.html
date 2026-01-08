@@ -5,14 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Seite 3 - Kärtchen</title>
 <style>
-
   html, body {
     height: 100%;
     margin: 0;
     padding: 0;
     overflow: hidden;
     font-family: sans-serif;
-    background-color: #ff69b4; /* Pinker Hintergrund */
+    background-color: #FFC0CB; /* Richtiger Pink-Hintergrund */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -26,7 +25,7 @@
     left: 20px;
     width: 50px;
     height: 50px;
-    background: pink;
+    background: #FFC0CB;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -43,14 +42,14 @@
   .card-title {
     font-size: 2em;
     color: #fff;
-    margin-bottom: 20px;
+    margin-bottom: 40px; /* Abstand nach oben erhöhen */
     text-align: center;
   }
 
   /* Kärtchen */
   .card-container {
     position: relative;
-    width: 60vw; 
+    width: 60vw;
     max-width: 600px;
     aspect-ratio: 3 / 2;
     background-color: #fff; /* Weißes Kärtchen */
@@ -60,6 +59,7 @@
     text-align: center;
     padding: 20px;
     box-sizing: border-box;
+    border-radius: 20px; /* Abgerundete Ecken */
   }
 
   /* Innen-Rahmen als PNG */
@@ -73,6 +73,7 @@
     background-image: url('rahmen.png'); /* hier dein PNG */
     background-size: cover;
     pointer-events: none;
+    border-radius: 20px; /* Rundung mit Kärtchen abstimmen */
   }
 
   /* Text mittig */
@@ -81,23 +82,17 @@
     z-index: 1; /* Über dem Rahmen */
   }
 
-  /* Reload/Next Button */
+  /* Next-Button unter dem Kärtchen */
   .next-btn {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: pink;
+    margin-top: 20px;
+    padding: 15px 30px;
+    border-radius: 50px;
+    background-color: #FFC0CB;
     color: white;
-    font-size: 24px;
+    font-size: 1.2em;
     cursor: pointer;
+    border: none;
     opacity: 0.7;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
   }
   .next-btn:hover { opacity: 1; }
 </style>
@@ -115,8 +110,8 @@
   <div class="card-text" id="quote">Du bringst mich immer zum Lachen.</div>
 </div>
 
-<!-- Reload/Next Button -->
-<button class="next-btn" onclick="nextQuote()">↻</button>
+<!-- Next Button -->
+<button class="next-btn" onclick="nextQuote()">Next</button>
 
 <script>
   const quotes = [
