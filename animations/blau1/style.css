@@ -7,18 +7,23 @@
 }
 
 html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow: hidden;
-    background-color: var(--dark-color);
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden; /* kein scrollen */
+  background-color: black; /* alles außerhalb schwarz */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .content-wrapper {
-  width: auto;
-  height: 100%; /* füllt den Bildschirm vertikal */
-  max-width: calc(100vh * 9 / 18); /* 9:18 Ratio */
-  background: transparent; /* dein Content ist hier drin */
+  width: 100%;
+  max-width: calc(100vh * 9 / 16); /* 9:16 Ratio */
+  height: 100%;
+  position: relative;
+  background: transparent; /* Content selbst kann alles sein */
 }
 
 :root {
