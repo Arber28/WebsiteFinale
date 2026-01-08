@@ -2,46 +2,65 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>Flipbook Mobile</title>
-<script src="js/jquery.js"></script>
-<script src="js/turn.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flipbook</title>
 <style>
 body {
-  margin:0;
-  padding:0;
-  background:#FFC0CB;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  height:100vh;
-  font-family:-apple-system,BlinkMacSystemFont,sans-serif;
-  overflow:hidden;
+  margin: 0;
+  background: #FFC0CB;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: -apple-system,BlinkMacSystemFont,sans-serif;
+  overflow: hidden;
 }
-#flipbook {
-  width:90vw;
-  max-width:360px;
-  height:75vh;
-  box-shadow:0 8px 25px rgba(0,0,0,0.3);
+
+.book-container {
+  width: 360px;
+  height: 540px;
+  position: relative;
+  perspective: 1500px;
 }
-#flipbook .hard, #flipbook .page {
-  background:white;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-size:24px;
-  border-radius:10px;
+
+.page {
+  width: 100%;
+  height: 100%;
+  background: white;
+  border-radius: 12px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 26px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease, z-index 0s 0.6s;
 }
-</style>
-</head>
-<body>
-  
-  <!-- Zurück-Button mit JS, garantiert Home -->
-<a id="back-home" style="
+
+.page.flipped {
+  transform: rotateY(-180deg);
+  z-index: 0;
+  transition: transform 0.6s ease;
+}
+
+.click-zone {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  z-index: 10;
+}
+
+.click-left { left: 0; }
+.click-right { right: 0; }
+
+#back-home {
   position: absolute;
   top: 20px;
   left: 20px;
-  z-index: 1000;
   width: 50px;
   height: 50px;
   background: rgba(255,255,255,0.8);
@@ -54,37 +73,52 @@ body {
   font-size: 24px;
   text-decoration: none;
   box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-  transition: transform 0.15s, box-shadow 0.15s;
-">
-←
-</a>
+}
+</style>
+</head>
+<body>
 
-<script>
-document.getElementById('back-home').addEventListener('click', function(e){
-    e.preventDefault(); // verhindert Standardverhalten
-    window.location.href = './home.html'; // springt garantiert zu home.html
-});
-</script>
-  
-<div id="flipbook">
-  <div class="hard">Cover</div>
+<a id="back-home" href="./home.html">←</a>
+
+<div class="book-container" id="book">
+  <div class="page">Cover</div>
   <div class="page">Seite 1</div>
   <div class="page">Seite 2</div>
   <div class="page">Seite 3</div>
-  <div class="hard">Rückseite</div>
+  <div class="page">Rückseite</div>
+
+  <div class="click-zone click-left"></div>
+  <div class="click-zone click-right"></div>
 </div>
+
 <script>
-$(document).ready(function() {
-  $('#flipbook').turn({
-    width: $('#flipbook').width(),
-    height: $('#flipbook').height(),
-    autoCenter:true,
-    display:'single',
-    acceleration:true,
-    gradients:true,
-    elevation:50
-  });
+const pages = Array.from(document.querySelectorAll(".page"));
+let current = 0;
+
+function flipNext() {
+  if(current >= pages.length-1) return;
+  pages[current].classList.add("flipped");
+  current++;
+}
+
+function flipPrev() {
+  if(current <= 0) return;
+  current--;
+  pages[current].classList.remove("flipped");
+}
+
+document.querySelector(".click-right").addEventListener("click", flipNext);
+document.querySelector(".click-left").addEventListener("click", flipPrev);
+
+// Swipe
+let startX = 0;
+document.addEventListener("touchstart", e => startX = e.touches[0].clientX);
+document.addEventListener("touchend", e => {
+  let diff = e.changedTouches[0].clientX - startX;
+  if(diff < -40) flipNext();
+  if(diff > 40) flipPrev();
 });
 </script>
+
 </body>
 </html>
