@@ -1,4 +1,4 @@
-const correctCode = "240223";
+const correctCode = "240223"; // TTMMJJ
 let enteredCode = "";
 
 const dots = document.querySelectorAll(".code-dots span");
@@ -22,14 +22,13 @@ buttons.forEach(btn => {
 
     if (enteredCode.length === 6) {
       if (enteredCode === correctCode) {
-        window.location.href = "index.html";
+        window.location.href = "home.html"; // Zielseite nach Code
       } else {
         enteredCode = "";
         updateDots();
-        document.querySelector(".lockscreen").classList.add("shake");
-        setTimeout(() => {
-          document.querySelector(".lockscreen").classList.remove("shake");
-        }, 400);
+        const lockscreen = document.querySelector(".lockscreen");
+        lockscreen.classList.add("shake");
+        setTimeout(() => lockscreen.classList.remove("shake"), 400);
       }
     }
   });
