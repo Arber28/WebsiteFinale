@@ -20,6 +20,23 @@ body {
   perspective: 1000px;
 }
 
+.black-bar {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 50px; /* Höhe des Balkens, kannst du anpassen */
+  background-color: black;
+  z-index: 1000; /* damit die Blumen drunter bleiben */
+}
+
+.black-bar.top {
+  top: 0;
+}
+
+.black-bar.bottom {
+  bottom: 0;
+}
+
 .night {
   position: fixed;
   left: 50%;
