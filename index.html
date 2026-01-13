@@ -7,19 +7,18 @@
 <style>
 html, body {
   margin: 0;
-  padding: 0;
   height: 100%;
   overflow: hidden;
   touch-action: manipulation;
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-  background-color: #FFC0CB;
-  color: white;
 }
 
 body {
+  background-color: #FFC0CB;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  color: white;
 }
 
 .lockscreen {
@@ -28,32 +27,31 @@ body {
   align-items: center;
   text-align: center;
   user-select: none;
-  width: 90%;
-  max-width: 400px;
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 5vw, 2rem);
   font-weight: 500;
-  margin-bottom: 0.5rem;
+  margin-bottom: 5px;
 }
 
 .tipp {
-  font-size: 0.9rem;
+  font-size: clamp(0.7rem, 3vw, 1rem);
+  color: white;
   opacity: 0.8;
-  margin-bottom: 2rem;
+  margin-bottom: 20px;
 }
 
 /* Code-Dots */
 .code-dots {
   display: flex;
   gap: 1rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 30px;
 }
 
 .code-dots span {
-  flex: 0 0 1.2rem;
-  height: 1.2rem;
+  width: clamp(15px, 4vw, 18px);
+  height: clamp(15px, 4vw, 18px);
   border: 2px solid white;
   border-radius: 50%;
   transition: background 0.2s ease;
@@ -69,8 +67,10 @@ h1 {
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
   width: 100%;
+  max-width: 320px;
 }
 
+/* Buttons */
 .keypad button {
   width: 100%;
   aspect-ratio: 1 / 1;
@@ -78,7 +78,7 @@ h1 {
   border: 2px solid white;
   background-color: rgba(255,255,255,0.8);
   color: #FFC0CB;
-  font-size: 1.5rem;
+  font-size: clamp(1rem, 5vw, 1.5rem);
   font-weight: bold;
   cursor: pointer;
   display: flex;
@@ -88,15 +88,15 @@ h1 {
 }
 
 .keypad button:active {
-  background-color: rgba(255,255,255,1);
+  background-color: rgba(255, 255, 255, 1);
   transform: scale(0.95);
 }
 
 .keypad .delete {
-  font-size: 1.2rem;
+  font-size: clamp(0.9rem, 4vw, 1.2rem);
 }
 
-/* Shake Animation */
+/* Shake bei falschem Code */
 @keyframes shake {
   0% { transform: translateX(0); }
   25% { transform: translateX(-6px); }
@@ -109,20 +109,25 @@ h1 {
   animation: shake 0.35s;
 }
 
-/* Small Screens */
-@media (max-width: 350px) {
+/* Mobile Anpassungen */
+@media (max-width: 400px) {
+  .keypad {
+    max-width: 220px;
+    gap: 0.75rem;
+  }
   h1 {
-    font-size: 1.5rem;
+    font-size: clamp(1.2rem, 6vw, 1.5rem);
   }
   .tipp {
-    font-size: 0.75rem;
+    font-size: clamp(0.6rem, 3vw, 0.9rem);
+  }
+  .code-dots {
+    gap: 0.75rem;
+    margin-bottom: 20px;
   }
   .code-dots span {
-    flex: 0 0 1rem;
-    height: 1rem;
-  }
-  .keypad button {
-    font-size: 1.2rem;
+    width: clamp(12px, 4vw, 15px);
+    height: clamp(12px, 4vw, 15px);
   }
 }
 </style>
@@ -142,7 +147,7 @@ h1 {
     <button>1</button><button>2</button><button>3</button>
     <button>4</button><button>5</button><button>6</button>
     <button>7</button><button>8</button><button>9</button>
-    <div style="width:100%;"></div> <!-- Platz für Null -->
+    <div style="width:100%;"></div>
     <button>0</button>
     <button class="delete">⌫</button>
   </div>
