@@ -6,7 +6,7 @@
 content="width=device-width, initial-scale=1.0,
 maximum-scale=1.0,user-scalable=no">
 
-<title>A4 PDF Karten</title>
+<title>A4 Karten PNG</title>
 
 <link rel="stylesheet"
 href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
@@ -26,6 +26,7 @@ body{
   font-family:system-ui;
 }
 
+/* Back Button */
 #back-home{
   position:absolute;
   top:20px;
@@ -45,6 +46,7 @@ body{
   box-shadow:0 4px 12px rgba(0,0,0,.25);
 }
 
+/* A4 Stack */
 .swiper{
   width:min(94vw,420px);
   aspect-ratio:1/1.414;
@@ -57,14 +59,18 @@ body{
 .swiper-slide{
   background:white;
   border-radius:0;
+  overflow:hidden;
   box-shadow:0 25px 60px rgba(0,0,0,.18);
-  display:flex;
 }
 
-canvas{
+.swiper-slide img{
   width:100%;
   height:100%;
   object-fit:contain;
+  display:block;
+  pointer-events:none;
+  -webkit-user-select:none;
+  user-select:none;
 }
 </style>
 </head>
@@ -74,51 +80,36 @@ canvas{
 <a id="back-home">←</a>
 
 <div class="swiper">
-  <div class="swiper-wrapper" id="slides"></div>
+  <div class="swiper-wrapper">
+
+    <div class="swiper-slide"><img src="seite1.png"></div>
+    <div class="swiper-slide"><img src="seite2.png"></div>
+    <div class="swiper-slide"><img src="seite3.png"></div>
+    <div class="swiper-slide"><img src="seite4.png"></div>
+
+  </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@4.0.379/build/pdf.min.js"></script>
 
 <script>
-pdfjsLib.GlobalWorkerOptions.workerSrc =
-"https://cdn.jsdelivr.net/npm/pdfjs-dist@4.0.379/build/pdf.worker.min.js";
-
 document.getElementById('back-home').onclick=e=>{
  e.preventDefault();
  window.location.href='./home.html';
 };
 
-async function loadPDF(){
-  const pdf = await pdfjsLib.getDocument('dokument.pdf').promise;
-  const container = document.getElementById("slides");
-
-  for(let i=1;i<=pdf.numPages;i++){
-    const page = await pdf.getPage(i);
-    const viewport = page.getViewport({scale:2});
-
-    const canvas = document.createElement("canvas");
-    const ctx = canvas.getContext("2d");
-    canvas.width = viewport.width;
-    canvas.height = viewport.height;
-
-    await page.render({canvasContext:ctx,viewport}).promise;
-
-    const slide = document.createElement("div");
-    slide.className = "swiper-slide";
-    slide.appendChild(canvas);
-    container.appendChild(slide);
-  }
-
-  new Swiper('.swiper',{
-    effect:"cards",
-    grabCursor:true,
-    cardsEffect:{perSlideOffset:16,perSlideRotate:1.5},
-    rewind:true
-  });
-}
-
-loadPDF();
+new Swiper('.swiper',{
+  effect:"cards",
+  grabCursor:true,
+  cardsEffect:{
+    perSlideOffset:16,
+    perSlideRotate:1.5,
+    slideShadows:true
+  },
+  rewind:true,
+  allowSlidePrev:true,
+  allowSlideNext:true
+});
 </script>
 
 </body>
