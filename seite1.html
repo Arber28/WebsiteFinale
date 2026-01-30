@@ -2,11 +2,9 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-
-<!-- Zoom & Scroll AUS -->
 <meta name="viewport"
 content="width=device-width, initial-scale=1.0,
-maximum-scale=1.0, user-scalable=no">
+maximum-scale=1.0,user-scalable=no">
 
 <title>A4 PDF Karten</title>
 
@@ -14,22 +12,20 @@ maximum-scale=1.0, user-scalable=no">
 href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 
 <style>
-html, body {
+html,body{
   margin:0;
-  padding:0;
   height:100%;
   overflow:hidden;
 }
 
 body{
-  font-family:-apple-system,BlinkMacSystemFont,sans-serif;
   background:#FFC0CB;
   display:flex;
   align-items:center;
   justify-content:center;
+  font-family:system-ui;
 }
 
-/* Back Button */
 #back-home{
   position:absolute;
   top:20px;
@@ -37,53 +33,38 @@ body{
   z-index:1000;
   width:50px;
   height:50px;
-  background:rgba(255,255,255,0.85);
+  background:rgba(255,255,255,.85);
   color:#FFC0CB;
   border-radius:50%;
   display:flex;
-  justify-content:center;
   align-items:center;
-  font-weight:bold;
+  justify-content:center;
   font-size:24px;
+  font-weight:bold;
   text-decoration:none;
-  box-shadow:0 4px 12px rgba(0,0,0,0.25);
-  transition:.15s;
-}
-#back-home:active{
-  transform:scale(.95);
+  box-shadow:0 4px 12px rgba(0,0,0,.25);
 }
 
-/* Swiper A4 */
 .swiper{
   width:min(94vw,420px);
   aspect-ratio:1/1.414;
 }
 
-/* Handy kleiner */
-@media (max-width:600px){
-  .swiper{
-    width:85vw;
-  }
+@media(max-width:600px){
+  .swiper{ width:85vw; }
 }
 
 .swiper-slide{
   background:white;
   border-radius:0;
-  overflow:hidden;
-
-  box-shadow:
-    0 25px 60px rgba(0,0,0,.18),
-    0 6px 14px rgba(0,0,0,.08);
-
-  -webkit-user-select:none;
-  user-select:none;
+  box-shadow:0 25px 60px rgba(0,0,0,.18);
+  display:flex;
 }
 
-.swiper-slide iframe{
+canvas{
   width:100%;
   height:100%;
-  border:0;
-  pointer-events:none;
+  object-fit:contain;
 }
 </style>
 </head>
@@ -93,57 +74,51 @@ body{
 <a id="back-home">←</a>
 
 <div class="swiper">
-  <div class="swiper-wrapper">
-
-    <div class="swiper-slide">
-      <iframe src="seite1.pdf"></iframe>
-    </div>
-
-    <div class="swiper-slide">
-      <iframe src="seite2.pdf"></iframe>
-    </div>
-
-    <div class="swiper-slide">
-      <iframe src="seite3.pdf"></iframe>
-    </div>
-
-    <div class="swiper-slide">
-      <iframe src="seite4.pdf"></iframe>
-    </div>
-
-  </div>
+  <div class="swiper-wrapper" id="slides"></div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@4.0.379/build/pdf.min.js"></script>
 
 <script>
-/* Back Button */
-document.getElementById('back-home').onclick = e=>{
-  e.preventDefault();
-  window.location.href='./home.html';
+pdfjsLib.GlobalWorkerOptions.workerSrc =
+"https://cdn.jsdelivr.net/npm/pdfjs-dist@4.0.379/build/pdf.worker.min.js";
+
+document.getElementById('back-home').onclick=e=>{
+ e.preventDefault();
+ window.location.href='./home.html';
 };
 
-/* Swiper Cards */
-new Swiper('.swiper',{
-  effect:"cards",
-  grabCursor:true,
+async function loadPDF(){
+  const pdf = await pdfjsLib.getDocument('dokument.pdf').promise;
+  const container = document.getElementById("slides");
 
-  cardsEffect:{
-    perSlideOffset:16,
-    perSlideRotate:1.5,
-    slideShadows:true
-  },
+  for(let i=1;i<=pdf.numPages;i++){
+    const page = await pdf.getPage(i);
+    const viewport = page.getViewport({scale:2});
 
-  allowSlideNext:true,
-  allowSlidePrev:true,
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+    canvas.width = viewport.width;
+    canvas.height = viewport.height;
 
-  threshold:6,
-  touchRatio:1.15,
-  resistanceRatio:0.7,
+    await page.render({canvasContext:ctx,viewport}).promise;
 
-  rewind:true,
-  loop:false
-});
+    const slide = document.createElement("div");
+    slide.className = "swiper-slide";
+    slide.appendChild(canvas);
+    container.appendChild(slide);
+  }
+
+  new Swiper('.swiper',{
+    effect:"cards",
+    grabCursor:true,
+    cardsEffect:{perSlideOffset:16,perSlideRotate:1.5},
+    rewind:true
+  });
+}
+
+loadPDF();
 </script>
 
 </body>
