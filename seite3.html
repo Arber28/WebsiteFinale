@@ -133,31 +133,48 @@
 <button id="next-button">Next</button>
 
 <script>
-const quotes = [
-  "Dein Lächeln.",
-  "Deine Art, mich zum Lachen zu bringen.",
-  "Wie du immer für mich da bist.",
-  "Deine Ehrlichkeit.",
-  "Wie du mich verstehst, ohne dass ich ein Wort sage.",
-  "Dein Mut.",
-  "Deine kleinen Gesten, die den Tag versüßen.",
-  "Wie du mich inspirierst, besser zu sein.",
-  "Deine Wärme und Herzlichkeit.",
-  "Alles an dir macht mein Leben schöner."
-];
+let quotes = [];
+let shuffledQuotes = [];
+let currentIndex = 0;
 
-function newQuote() {
-  const quoteDiv = document.getElementById('quote');
-  const randomIndex = Math.floor(Math.random() * quotes.length);
-  quoteDiv.innerText = quotes[randomIndex];
+// Shuffle
+function shuffle(array) {
+  let newArray = [...array];
+  for (let i = newArray.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+  }
+  return newArray;
 }
 
-document.getElementById('next-button').addEventListener('click', newQuote);
+function nextQuote() {
+  const quoteDiv = document.getElementById('quote');
 
-// Erstes Zitat beim Laden
-newQuote();
+  if (currentIndex >= shuffledQuotes.length) {
+    shuffledQuotes = shuffle(quotes);
+    currentIndex = 0;
+  }
 
-// Touch-Scroll verhindern (Mobil)
+  quoteDiv.innerText = shuffledQuotes[currentIndex];
+  currentIndex++;
+}
+
+// JSON laden
+fetch('quotes.json')
+  .then(response => response.json())
+  .then(data => {
+    quotes = data;
+    shuffledQuotes = shuffle(quotes);
+    nextQuote();
+  })
+  .catch(err => {
+    document.getElementById('quote').innerText = "Fehler beim Laden 💔";
+    console.error(err);
+  });
+
+document.getElementById('next-button').addEventListener('click', nextQuote);
+
+// Touch-Scroll verhindern
 window.addEventListener('touchmove', function(e) {
   e.preventDefault();
 }, { passive: false });
